@@ -4,62 +4,26 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Two artifacts: a **design canvas** (`Blip Site.dc.html`, the iteration space — "blip" was an early codename) and the **shipped static marketing site** (`site/`, live on GitHub Pages) for ditto — the digital-receipt product whose real implementation lives in `erenmeren/ditto-admin` (see `github.md`). The product is not modified from this project.
+The static marketing site for **maratus** — a small counter screen that shows a QR code for a link your business software sends through the API. The product itself lives in `erenmeren/maratus-admin`; it is not modified from this project.
 
-Files:
-- `Blip Site.dc.html` — the design doc (template + one logic class). The canvas where design iterations happen.
-- `site/` — **the real static site in the HYBRID voice**, single-page. As of canvas turn **12b ("the board", 2026-08-10)** the composition is one full-bleed 12-column grid of unequal cells running the whole page; `body` carries `class="v-b"` and `docs.html` shares it so nav/footer/pilot resolve identically. Sections top-to-bottom: hero (9 cols + a vertical acid "bye." panel) → meet-the-box (the device photo sits in its own cell with a negative `margin-top` so it breaks up over the rule) → #how story on a **dark ink band** → #try demo → marquee strip → `.beyond` "hands over" ledger → #brand studio → #price (acid) → #faq → dev-strip → #pilot → clipped-wordmark footer. Plus `docs.html` (full API reference) and `how-it-works.html` (redirect stub). Assets: `style.css` + `site.js` + `device-angled.jpg` (a retouched vendor render with the branded idle screen perspective-composited on; sources and recipe in `device-photos/`). No build step — `python3 -m http.server --directory site`.
-  - **Two things in the CSS are load-bearing, don't undo them.** (1) `--edge` is where *text* starts on every section; bands and cells still bleed to the page edge and only their inner padding uses it, which is what keeps full-bleed and column-constrained sections on one left margin. (2) The storyboard runs on a **single 8 s pure-CSS clock**, four 2 s beats — `runX` walks the square along the rail, `numLit` lights each number, `cellDark` takes the whole beat cell from ink to acid *and flips its `color` so children inherit a readable one*, `screenCode`/`screenIdle` flip the mini box, `holdLit` settles the credit pill. It is deliberately not in JS: it stays off the main thread and can't drift. Inline `opacity`/`background` values are the reduced-motion resting state (code shown, credit spent), so the band still tells the truth with animation off.
-  - `site.js` is vanilla and does only three things: the deterministic fake QR, IntersectionObserver scroll reveals (`.rv`/`.rv-x`/`.rv-drop`, staggered per `[data-stagger]`), the live trigger demo (fires when it scrolls into view, not on load), and the branding-studio replay with the real console theme presets.
-  - **Watch `.brand`** — it is the nav wordmark link. The branding *section* is `.branding`; naming it `.brand` silently gives the nav link `display:grid` and a stray border. Big design/voice changes go canvas-first as a new turn; copy- and asset-level site changes may land directly in `site/` (established precedent: review-panel follow-ups, device photo, beyond band). **Live at https://erenmeren.github.io/ditto-site/** — deployed as the `gh-pages` branch of the separate public repo `erenmeren/ditto-site` (only `site/*` + `.nojekyll` are published; this repo, the canvas and docs stay local). To redeploy: copy `site/*` into a temp clone of that repo's `gh-pages` branch, commit, push. All copy must respect the code-verified facts (202 `{id,status:"queued"}`, 60 s trigger TTL, "a couple of seconds" ack, org-wide branding push, 50-credit starter grant, per-device plans exist, pairing-code nuance) — see the fact list in the t10 commits. **Positioning rule (2026-08-03 panel decision):** the platform vision (`Ditto_Retail_Customer_Interaction_Platform.md`) enters the site only as concrete objects ("receipt, ticket, warranty, menu" / the `#beyond` band); the words *platform, experience, interaction, programmable, stateless* and unshipped hardware (NFC, camera, scanner) never appear in site copy. Category language waits for the first pilot case study + ≥2 non-receipt live uses.
-- `device-photos/` — source material for the device image: the two Waveshare vendor sheets (`devices-1/2.jpeg`, NOT published) and `idle-screen.html` / `idle-dark.html` (720×720 screen content rendered headless, then perspective-warped onto the photo's display; warp corners and mask coords live in the relevant site commit messages).
-- `support.js` — **generated**, do not edit ("GENERATED from dc-runtime/src/*.ts"). The dc runtime.
-- `github.md` — sync log against the product repo, with a screen map (screen → source of truth).
-- `.thumbnail` — WebP preview image, tooling-generated.
+The repo root *is* the site (single page, no build step):
 
-**Language rule: everything tracked in this repo is English-only** (code, comments, commit messages, docs). Internal review notes may be Turkish but live untracked under `docs/reviews/` (gitignored — never commit or push them).
+- `index.html` — the whole page (`body.hybrid`): dark hero with the device concept and a live screen preview → ticker → intro → `#how` three-step handoff tabs → `#uses` use-case picker → brand section → ownership grid → FAQ → closing CTA → footer.
+- `style.css` — base styles; `hybrid.css` — the `.hybrid` theme layered on top.
+- `app.js` — the `#uses` picker (`cases` data → `[data-use]` buttons).
+- `hybrid.js` — the `#how` handoff tabs (`flowData`, keyboard-navigable tablist).
+- `screen.js` — projects the 640px screen UI onto the four inner-glass corners of `assets/maratus-device-concept.png` (homography, recomputed on resize) and cycles the scenes (receipt / surprise / loyalty / menu) with pause + dot controls.
+- `assets/` — `maratus-device-concept.png` (1254×1254 render; the corner coords in `screen.js` depend on it), `demo-qr.svg`.
+- `CNAME` — `maratus.co`. **Load-bearing**: GitHub Pages drops the custom domain if it is missing from the deployed branch.
 
-There is no build, no tests, no lint, no package manager. To preview, serve the directory over HTTP (`python3 -m http.server`) and open the file — `file://` breaks sibling `.dc.html` fetches. Requires network: the runtime pulls React 18 UMD from unpkg and fonts from Google Fonts.
+Preview: `python3 -m http.server` in the repo root.
 
-## Product model (what the site and current canvas turns describe)
+## Deploy
 
-**Trigger-only.** `POST /api/v1/devices/{id}/trigger` with a Bearer API key and a required `Idempotency-Key`, body `{ action:"show_qr", payload:{ url } }` → `202 { id, status:"queued" }`, one credit on hold → MQTT `d/{deviceId}/cmd` delivers the command, the box shows the QR and acks — **the ack settles the credit ("paid on show")** → customer scans; the QR carries the caller's URL directly. 60 s TTL: no ack in time → command expires, hold released, a late code never appears. Ditto never fetches, renders, or stores what's behind the URL. A `pin` endpoint exists for durable codes. No status endpoint/callback yet (honestly stated in docs). Screen layout/branding is a separate flow driven from the admin console (org-wide push), never from the caller's request. Keep any new copy consistent with this — the old ingest model (presigned storage, capability tokens, `/r/<token>`) survives only in archived canvas turns t4 and earlier.
+Live at https://maratus.co, served by GitHub Pages from the `gh-pages` branch of `erenmeren/ditto-site`. To redeploy, copy the site files (`index.html`, `*.css`, `*.js`, `assets/`, `CNAME`) plus an empty `.nojekyll` into a clone of `gh-pages`, commit, push. Don't publish `CLAUDE.md`, `.gitignore` or anything under `docs/` / `device-photos/`.
 
-## Design-doc format
+## Rules
 
-```
-<x-dc>  … template …  </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{…}">
-  class Component extends DCLogic { … renderVals() { … } }
-</script>
-```
-
-The template renders through React against the **flat object returned by `renderVals()`**, merged over props. `data-props` declares editor-exposed props (`brandName`, default `"ditto"`; `txMultiplier`) reachable as `this.props.x`. The brand name is deliberately a prop — the product's naming decision is deferred (see `ditto-admin/docs/naming-candidates.md`); never hardcode it in new copy.
-
-**`{{ }}` is a path resolver, not JS.** It supports identifiers, `.` / `[…]` access, string/number/bool literals, `!`, and `==`/`===`/`!=`/`!==` — nothing else. No calls, no arithmetic, no ternaries. This is why `renderVals()` is huge: every computed style string, label, and handler is precomputed there and exposed as a flat key (`stNode0`…`stNode5`, `ds_head`, `dsDown_qr`, `stDot`). Adding interactive UI means adding keys to `renderVals()`, not logic to the markup.
-
-Template features:
-- `{{ }}` inside any attribute or text. A whole-attribute `{{ x }}` passes the raw value (functions, refs, arrays); mixed text interpolates to a string.
-- Event attributes take handlers by reference: `onClick="{{ stPlay }}"`, `onMouseEnter="{{ stEnter }}"`. Handler factories (`stGo = i => () => …`) are pre-bound in `renderVals()` as `stGo0`, `stGo1`, ….
-- `style="…;{{ stNode0 }}"` — inline style strings are parsed into React style objects, so state-driven styling is done by appending a precomputed CSS fragment.
-- `style-hover="border-color:#16150f"` (any `style-<pseudo>`) compiles to a generated class in an injected stylesheet, `!important`-ified. Use this for hover, not JS.
-- `<sc-for list="{{ arr }}" as="c" hint-placeholder-count="169">` and `<sc-if value="{{ x }}">`.
-- `<helmet>` in the template head-block carries `<meta name="design_doc_mode" content="canvas">`, fonts, and the `dv-*` canvas CSS.
-- `ref="{{ qr2a }}"` wires React refs created in `componentDidMount` for canvas drawing (`draw()` on `componentDidUpdate`).
-- `<dc-import name="X">` / `<x-import>` fetch sibling `./X.dc.html` files — relevant only if the doc is ever split.
-
-## Canvas structure and conventions
-
-The doc is a review canvas: newest turn first. Each `<section class="dv-turn" id="tN">` is one conversation turn (currently t12 … t2 top-to-bottom). **t12 is what shipped** — 12a "surfaces" (bands lead) and 12b "the board" (grid leads); the user picked 12b and asked for 12a's dark story band on it, and `site/` was rebuilt to that. t11 (11a/11b/11c) is the three-way composition study that led there; 11b "the tape" (a receipt-spine down the left) was rejected. t12's options use only `brandName` + `t7Qr`, add no `renderVals()` keys and no Component state — their motion is CSS keyframes declared in the `<helmet>` style block (`dvRise`/`dvSlide`/`dvWipe`/`dvDrop`/`dvRunX`/`dvNum`/`dvShow`/`dvHide`/`dvHold`, plus `.dv-grain`), scoped off by a `prefers-reduced-motion` rule on `#t11`/`#t12`. The canvas copy of 12b was backported to the dark story band on 2026-08-11, so canvas and `site/` agree — keep it that way. **t10 is the current direction: the HYBRID voice won** (Archivo Black lowercase, 2px ink borders, acid `#e8ff2f`, paper `#f4f3ee`) — 10a simple home, 10b how-it-works (7a's content, `hy*` story fork with acid square pulse), 10c all-in-one single page. Earlier turns: t9 = dialect ports (`tg*` live-trigger slice), t8/t7 = the daylight site (mirrored in `site/`, NOT yet re-skinned to hybrid), t6–t2 = history., containing `.dv-opt` design options with ids like `4a`, `2a`, `2c`, a `data-screen-label`, a fixed-width `.dv-card`, and a closing `.dv-next` paragraph proposing what to build next. New work goes in as a **new turn section at the top of `<x-dc>`**, with the next turn number.
-
-One `Component` class backs every option on the canvas, so state is namespaced by prefix: `st*` = the six-step flow storyboard (auto-advances on a 3.2 s interval, pauses on hover, clickable steps), `ds*` = the screen-designer mock (drag/resize/visibility per element, `code` vs `idle` page, page-vs-store scope), `b*` + `logoOn` = brand editor, `colorway`/`shell*` = device colourways, `explode`/`layer*` = the exploded-device view, `tx`/`log`/`token` = the live ingest demo, `sa*` = 5a scroll story, `nb*` = 5b auto loop, `pd*` = 5c interactive demo (`this.rm` class field = reduced-motion flag), `ta*`/`tb*` = t6 branding pickers (themes from `ditto-admin/lib/branding-presets.ts`, real preset hexes), `qd*` = t7's daylight demo twin of `pd*` (own timers `_qdTimers`/`_qdTick`), `hw*` = t7's 4-beat story fork of `sa*`. t7 still shares `ta*` (theme picker) with t6's 6a card — harmless on a review canvas.
-
-**Credit timing (the user corrected this — don't regress):** the credit settles when the box ACKS THE DISPLAY (story beat 3, "paid on show"), not when the customer scans. Scanning is free and last. t5's archived 5-beat card intentionally keeps the old wording. Brand mock-ups use the generic "Your shop", never a concrete merchant name. Keep new options in their own prefix, and clear any timers in `componentWillUnmount`.
-
-**t4 vs t5:** t4's copy describes the pre-pivot ingest model and is kept only for comparison. t5 tells the current **trigger-only** story (caller passes a URL; Ditto never sees content; 1 credit reserved → settled on ack) — new work must follow t5's story, sourced from `ditto-admin/docs/DEVELOPMENT.md` and `device-protocol.md`.
-
-**Verification without a browser:** every `{{ }}` key must resolve to a `renderVals()` key — the plan doc `docs/superpowers/plans/2026-08-01-t5-how-it-works-redesign.md` (Task 1) contains a small `check-canvas.mjs` static checker for this; headless `firefox --screenshot` (write to /tmp, then copy) or a Marionette script gives real render/screenshot verification, and `magick` is available for cropping.
-
-QR codes are fake — deterministic FNV-1a hash + LCG (`hash()`, `matrix()`, `brandQr`, `tinyQr`), rendered either to canvas or as a 13×13 grid of divs. Don't reach for a QR library.
-
-Visual language (2a "quiet engineering" / 2c "hybrid"): ink `#16150f`, paper `#f4f3ee`, panel `#eae7de`, rules `#c3bfb3`/`#d8d5cc`, muted `#8a8577`, acid accent `#e8ff2f` used sparingly. Type is Helvetica Neue for headings/body with tight negative tracking, IBM Plex Mono for labels (uppercase, letter-spaced) and code, Archivo Black only in 2c. Copy is lowercase-leaning, plain-language, British spelling ("colours", "organisation"). The t5 options each carry their own palette/type system (5a daylight retail/Space Grotesk+Inter, 5b night petrol/Instrument Serif subtitles, 5c workbench cobalt/Bricolage Grotesque) — spec: `docs/superpowers/specs/2026-08-01-t5-how-it-works-redesign-design.md`.
+- Everything tracked is English-only (code, comments, commits). Internal notes may be Turkish but stay untracked under `docs/reviews/` (gitignored).
+- Contact address is `hi@maratus.co`.
+- Keep copy consistent with the real product: the caller sends a device ID + a URL, maratus shows it as a QR code, the customer's browser opens the caller's URL — maratus never hosts or fetches the content. The trigger API rejects requests when the device is offline or paused. Pinned content can be set per device, store or organisation from the management panel.
