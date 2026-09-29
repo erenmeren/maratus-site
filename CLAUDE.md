@@ -20,7 +20,7 @@ Preview: `python3 -m http.server` in the repo root.
 
 ## Deploy
 
-Live at https://maratus.co, served by GitHub Pages from the `gh-pages` branch of `erenmeren/ditto-site`. To redeploy, copy the site files (`index.html`, `*.css`, `*.js`, `assets/`, `CNAME`) plus an empty `.nojekyll` into a clone of `gh-pages`, commit, push. Don't publish `CLAUDE.md`, `.gitignore` or anything under `docs/` / `device-photos/`.
+Live at https://maratus.co, served by GitHub Pages from the `gh-pages` branch of `erenmeren/maratus-site` (renamed from `ditto-site`). To redeploy, copy the site files (`index.html`, `*.css`, `*.js`, `assets/`, `CNAME`) plus an empty `.nojekyll` into a clone of `gh-pages`, commit, push. `docs.html` (the old API reference) and its `assets/style.css`, `assets/site.js`, `assets/favicon.svg`, `assets/og.png` live only on `gh-pages` — keep them when redeploying. Don't publish `CLAUDE.md`, `.gitignore` or anything under `docs/` / `device-photos/`.
 
 ## Rules
 
