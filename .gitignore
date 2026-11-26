@@ -1,0 +1,12 @@
+.DS_Store
+.superpowers/
+node_modules/
+
+# local working material, never committed
+.work/
+ai/
+cad-src/
+site/shots/
+
+# internal notes: local only, never committed (this repo is public)
+docs/*.md

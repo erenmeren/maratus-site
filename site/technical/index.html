@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maratus | Technical</title>
+<meta name="description" content="How the Maratus device connects, mounts and is triggered: Ethernet, Wi-Fi, USB-C, the Dock, the magnet and the API.">
+<meta name="theme-color" content="#f6b8c1">
+<link rel="icon" href="../assets/logo/favicon-32.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="preload" href="../assets/fonts/gabarito-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/tech.css">
+<script type="importmap">{"imports":{"three":"../vendor/three/three.module.js","three/addons/":"../vendor/three/addons/"}}</script>
+<script>(function(d){try{var c=document.createElement('canvas');if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&localStorage.getItem('motion')!=='off'&&innerHeight>=480&&c.getContext('webgl2'))d.classList.add('live')}catch(e){}})(document.documentElement)</script>
+<script type="module" src="../js/tech.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg class="defs" width="0" height="0" aria-hidden="true"><symbol id="lockup" viewBox="0 -788 4412.7 800"><g transform="translate(303.86 -291.86) scale(7.15809)"><path fill="var(--disc)" fill-rule="evenodd" d="M-11.34 -46.2A1.3 1.3 0 0 1 -12.7 -48.07A39 39 0 1 1 49.64 -2.78A1.3 1.3 0 0 1 47.44 -3.49L44.16 -24.21A30.4 30.4 0 0 0 9.38 -49.48Z"/><path fill="currentColor" fill-rule="evenodd" d="M6.26 39.51L-10.53 42.17A23 23 0 0 1 -36.85 23.05L-42.17 -10.53A23 23 0 0 1 -23.05 -36.85L10.53 -42.17A23 23 0 0 1 36.85 -23.05L42.17 10.53A23 23 0 0 1 23.05 36.85Z"/></g><path fill="currentColor" transform="translate(930.7 0) scale(1)" d="M14 0L108 0C115.73 0 122 -6.27 122 -14L122 -486C122 -493.73 115.73 -500 108 -500L14 -500C6.27 -500 0 -493.73 0 -486L0 -14C0 -6.27 6.27 0 14 0ZM60.36 -220L108 -220C115.73 -220 122 -226.27 122 -234L122 -300C122 -357.44 160.05 -404 207 -404C253.95 -404 292 -348.49 292 -280L292 -14C292 -6.27 298.27 0 306 0L400 0C407.73 0 414 -6.27 414 -14L414 -280C414 -407.03 336.64 -510 241.21 -510C133.59 -510 46.36 -398.08 46.36 -260L46.36 -234C46.36 -226.27 52.63 -220 60.36 -220ZM352.36 -220L400 -220C407.73 -220 414 -226.27 414 -234L414 -300C414 -357.44 452.05 -404 499 -404C545.95 -404 584 -348.49 584 -280L584 -14C584 -6.27 590.27 0 598 0L692 0C699.73 0 706 -6.27 706 -14L706 -280C706 -407.03 628.64 -510 533.21 -510C425.59 -510 338.36 -398.08 338.36 -260L338.36 -234C338.36 -226.27 344.63 -220 352.36 -220ZM1286.52 -250C1286.52 -393.6 1170 -510 1026.26 -510C882.52 -510 766 -393.6 766 -250C766 -106.4 882.52 10 1026.26 10C1170 10 1286.52 -106.4 1286.52 -250ZM1206 -250C1206 -164.95 1133.72 -96 1044.56 -96C955.4 -96 883.12 -164.95 883.12 -250C883.12 -335.05 955.4 -404 1044.56 -404C1133.72 -404 1206 -335.05 1206 -250ZM1220 0L1314 0C1321.73 0 1328 -6.27 1328 -14L1328 -486C1328 -493.73 1321.73 -500 1314 -500L1220 -500C1212.27 -500 1206 -493.73 1206 -486L1206 -14C1206 -6.27 1212.27 0 1220 0ZM1414 0L1508 0C1515.73 0 1522 -6.27 1522 -14L1522 -486C1522 -493.73 1515.73 -500 1508 -500L1414 -500C1406.27 -500 1400 -493.73 1400 -486L1400 -14C1400 -6.27 1406.27 0 1414 0ZM1456.16 -240L1508 -240C1515.73 -240 1522.33 -247.81 1522.75 -257.43C1529.22 -332.78 1577.21 -392.66 1637.67 -400.91C1645.59 -401.45 1652 -408.15 1652 -415.88L1652 -496C1652 -503.73 1645.46 -509.72 1637.39 -509.38C1530.63 -500.27 1446.36 -392.1 1446.36 -260L1446.36 -249.8C1446.36 -244.39 1450.75 -240 1456.16 -240ZM2194.52 -250C2194.52 -393.6 2078 -510 1934.26 -510C1790.52 -510 1674 -393.6 1674 -250C1674 -106.4 1790.52 10 1934.26 10C2078 10 2194.52 -106.4 2194.52 -250ZM2114 -250C2114 -164.95 2041.72 -96 1952.56 -96C1863.4 -96 1791.12 -164.95 1791.12 -250C1791.12 -335.05 1863.4 -404 1952.56 -404C2041.72 -404 2114 -335.05 2114 -250ZM2128 0L2222 0C2229.73 0 2236 -6.27 2236 -14L2236 -486C2236 -493.73 2229.73 -500 2222 -500L2128 -500C2120.27 -500 2114 -493.73 2114 -486L2114 -14C2114 -6.27 2120.27 0 2128 0ZM2350 -166.92C2350 -74.73 2424.73 0 2516.92 0L2540 0C2547.73 0 2554 -6.27 2554 -14L2554 -96.2C2554 -101.61 2549.61 -106 2544.2 -106L2534 -106C2499.76 -106 2472 -133.76 2472 -168L2472 -624C2472 -631.73 2465.73 -638 2458 -638L2364 -638C2356.27 -638 2350 -631.73 2350 -624L2350 -166.92ZM2288 -396.12L2540 -396.12C2547.73 -396.12 2554 -402.39 2554 -410.12L2554 -486C2554 -493.73 2547.73 -500 2540 -500L2288 -500C2280.27 -500 2274 -493.73 2274 -486L2274 -410.12C2274 -402.39 2280.27 -396.12 2288 -396.12ZM3032 -500L2938 -500C2930.27 -500 2924 -493.73 2924 -486L2924 -14C2924 -6.27 2930.27 0 2938 0L3032 0C3039.73 0 3046 -6.27 3046 -14L3046 -486C3046 -493.73 3039.73 -500 3032 -500ZM2985.64 -280L2938 -280C2930.27 -280 2924 -273.73 2924 -266L2924 -200C2924 -142.56 2881.02 -96 2828 -96C2774.98 -96 2732 -151.51 2732 -220L2732 -486C2732 -493.73 2725.73 -500 2718 -500L2624 -500C2616.27 -500 2610 -493.73 2610 -486L2610 -220C2610 -92.97 2691.99 10 2793.13 10C2907.19 10 2999.64 -101.92 2999.64 -240L2999.64 -266C2999.64 -273.73 2993.37 -280 2985.64 -280ZM3452.99 -380.82C3430.91 -459.72 3371.87 -510 3290 -510C3188.24 -510 3111.44 -445 3111.44 -352.5C3111.44 -265 3170.96 -219.68 3290 -195.88C3328.4 -185.38 3358.94 -175 3358.94 -149C3358.94 -128 3323.79 -90.7 3286.16 -90.7C3252.99 -90.7 3219.1 -117.66 3204.01 -148.02C3201.24 -154.86 3193.24 -158.95 3186.16 -157.15L3115.89 -139.36C3108.55 -137.51 3104.43 -129.18 3106.67 -120.77C3131.37 -39.73 3197.73 10 3290 10C3399.44 10 3472.4 -54 3472.4 -149C3472.4 -237.5 3409.04 -282.32 3290 -306.12C3251.6 -316.62 3224.9 -326.5 3224.9 -352.5C3224.9 -373.5 3256.21 -409.3 3293.84 -409.3C3319.82 -409.3 3349.17 -385.86 3362.07 -360.06C3364.66 -353.48 3372.33 -349.12 3379.19 -350.32L3442.87 -361.51C3450.7 -362.89 3455.23 -371.53 3452.99 -380.82Z"/></symbol></svg>
+<header class="top" data-tone="light">
+  <a class="brand" href="../" aria-label="maratus, home"><svg width="176" height="32" aria-hidden="true"><use href="#lockup"/></svg></a>
+  <nav aria-label="Main">
+    <a href="../#hands">What it hands over</a>
+    <a href="../#how">How it works</a>
+    <a href="../#places">Places</a>
+    <a href="../#device">The device</a>
+    <a href="../docks/">Docks</a>
+    <a href="./" aria-current="page">Technical</a>
+    <a href="../developers/">Developers</a>
+    <a href="../pricing/">Pricing</a>
+  </nav>
+  <a class="btn top-btn" href="mailto:hi@maratus.co?subject=Maratus">Talk to us</a>
+  <details class="menu">
+    <summary>Menu</summary>
+    <nav aria-label="Main, small screens">
+      <a href="../#hands">What it hands over</a>
+      <a href="../#how">How it works</a>
+      <a href="../#places">Places</a>
+      <a href="../#device">The device</a>
+      <a href="../docks/">Docks</a>
+      <a href="./" aria-current="page">Technical</a>
+      <a href="../developers/">Developers</a>
+      <a href="../pricing/">Pricing</a>
+      <a href="mailto:hi@maratus.co?subject=Maratus">Talk to us</a>
+    </nav>
+  </details>
+</header>
+
+<div class="ctl"><button type="button" id="motion" aria-pressed="false" aria-label="Pause motion" title="Pause motion"><svg class="i-pause" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 1h4v16H3zM11 1h4v16h-4z"/></svg><svg class="i-play" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 1l12 8-12 8z"/></svg></button></div>
+
+<main id="main" class="tech">
+  <div class="view" aria-hidden="true"><div class="view-in"><canvas></canvas><img class="vposter" src="../assets/img/poster-hero.webp" width="1000" height="1000" alt=""><p class="caption">Drawn live from the CAD. Drag to turn it.</p></div></div>
+  <div class="doc">
+    <section id="top" class="intro">
+      <h1>How it’s built and how it connects</h1>
+      <p class="lead">For the people who will wire it up. This page describes the device as designed. The hardware is in development and the pictures are design renders.</p>
+      <p class="act"><a class="btn" href="https://docs.maratus.co" target="_blank" rel="noopener">Read the API docs</a><a class="text" href="mailto:hi@maratus.co?subject=Maratus%20technical">hi@maratus.co</a></p>
+      <figure class="still"><img loading="lazy" src="../assets/img/still-hero-900.webp" width="1600" height="1300" alt="Design render of the device on its Dock, front three-quarter view, with the name maratus on the glass under the screen."></figure>
+    </section>
+
+    <section id="size">
+      <h2>Size</h2>
+      <p>The Core on its Dock, resting on a counter.</p>
+      <figure class="dims">
+        <div class="dim front"><img src="../assets/img/ortho-front.webp" width="900" height="900" loading="lazy" alt="Front view of the Core on its Dock, 86.6 millimetres wide and 93.8 millimetres high."><span class="w">86.6 mm</span><span class="h">93.8 mm</span></div>
+        <div class="dim side"><img src="../assets/img/ortho-side.webp" width="900" height="900" loading="lazy" alt="Side view of the Core on its Dock, 61.4 millimetres deep."><span class="w">61.4 mm</span></div>
+      </figure>
+      <dl>
+        <div><dt>Width</dt><dd>86.6 mm</dd></div>
+        <div><dt>Depth</dt><dd>61.4 mm</dd></div>
+        <div><dt>Height</dt><dd>93.8 mm</dd></div>
+        <!-- TODO (hardware): weight of Core and Dock. Not in the CAD or the project facts. -->
+        <!-- TODO (hardware): size of the Core on its own, as an approved figure. The mesh measures about 86.6 x 90.6 x 15.5 mm, not confirmed. -->
+      </dl>
+    </section>
+
+    <section id="core">
+      <h2>The Core</h2>
+      <p>The screen and the computer behind it. It works on the Dock, or on its own.</p>
+      <dl>
+        <div><dt>Screen</dt><dd>4-inch touchscreen behind black glass. The name maratus is on the glass, under the screen.</dd></div>
+        <div><dt>Processor</dt><dd>ESP32-P4</dd></div>
+        <div><dt>Power</dt><dd>Always powered. On the Dock through the gold contacts, off the Dock through its own USB-C port.</dd></div>
+        <div><dt>Underside</dt><dd>USB-C port and slots for the sounder</dd></div>
+        <div><dt>Back</dt><dd>One flat plane with 20 round gold contacts, level with the case. Two 10 mm magnets sit half a millimetre under it, one each side of the contacts.</dd></div>
+        <div><dt>Updates</dt><dd>Firmware over the air, configuration from the panel</dd></div>
+        <!-- TODO (hardware): resolution and brightness of the production panel. Today's firmware runs on a development board with a 720 x 720 screen. -->
+        <!-- TODO (hardware): operating temperature, materials, colours on offer. The home page shows the eight proposals of the colour sheet of 2026-11-22; none is decided. -->
+        <!-- TODO (hardware): whether the Core has a battery. None is in the facts, so nothing here says it runs without a cable. -->
+      </dl>
+    </section>
+
+    <section id="under">
+      <h2>Underneath</h2>
+      <p>The Core’s own USB-C port is on its underside. Off the Dock, this is where the power goes in.</p>
+      <figure class="still"><img loading="lazy" src="../assets/img/still-under.webp" width="900" height="900" alt="The underside of the Core, with its USB-C port and four slots."></figure>
+    </section>
+
+    <section id="dock">
+      <h2>The Dock</h2>
+      <p>It holds the Core at an angle and keeps the cables on the staff side.</p>
+      <dl>
+        <div><dt>Contact</dt><dd>20 spring pins (pogo pins), two rows of ten</dd></div>
+        <div><dt>Hold</dt><dd>Two magnets in the Core’s back, opposite the Dock’s own</dd></div>
+        <div><dt>Lock</dt><dd>A bolt through the Dock into a nut in the Core</dd></div>
+        <div><dt>Power</dt><dd>USB-C on the back of the Dock. It reaches the Core through the spring pins.</dd></div>
+        <div><dt>Sockets</dt><dd>USB-C (power only) and Ethernet (RJ45), on the back</dd></div>
+        <!-- TODO (hardware): pin assignment and pitch. The CAD draws a 2.54 mm grid, marked as an assumption to confirm. -->
+        <!-- TODO (hardware): the final lock part. The captive bolt in the design spec is a sketch; the CAD shows a plain M4 bolt. -->
+      </dl>
+      <figure class="still two-up"><img loading="lazy" src="../assets/img/still-contacts-900.webp" width="1600" height="1300" alt="Close-up of the Dock’s twenty gold spring pins and the lock bolt above them."><img loading="lazy" src="../assets/img/still-pads-900.webp" width="1600" height="1300" alt="Close-up of the twenty flat gold contacts on the back of the Core."></figure>
+    </section>
+
+    <section id="network">
+      <h2>Network and power</h2>
+      <dl>
+        <div><dt>Wi-Fi</dt><dd>Dual-band Wi&#8209;Fi 6. The installer joins the store’s Wi&#8209;Fi on the device’s own screen.</dd></div>
+        <div><dt>Ethernet</dt><dd>Through the Dock</dd></div>
+        <div><dt>USB-C</dt><dd>On the underside of the Core and on the back of the Dock. On the Dock, use the Dock’s port: the Core stands too low for a plug underneath.</dd></div>
+        <!-- TODO (hardware): power rating and the adapter supplied. -->
+        <!-- TODO (firmware): which addresses and ports a store network has to allow. -->
+      </dl>
+      <figure class="still"><img loading="lazy" src="../assets/img/still-ports-900.webp" width="1600" height="1300" alt="Close-up of the USB-C and Ethernet sockets on the back of the Dock."></figure>
+    </section>
+
+    <section id="mount">
+      <h2>Mounting</h2>
+      <dl>
+        <div><dt>Dock</dt><dd>On the counter, by the till</dd></div>
+        <div><dt>Steel</dt><dd>The two magnets in the Core’s back hold it to a steel surface. Power goes in underneath, over USB-C.</dd></div>
+        <div><dt>Holder</dt><dd>Store-style security holders. The USB-C port underneath stays free.</dd></div>
+        <!-- TODO (hardware): holding force on steel and the surfaces it has been tried on. design-spec section 12: "Holding force with two magnets: not calculated again, not measured." The magnets were specified for the Dock. -->
+        <!-- TODO (hardware): which holders fit. The holder, post and cable drawn here are examples. -->
+      </dl>
+      <figure class="still two-up"><img loading="lazy" src="../assets/img/still-back.webp" width="900" height="900" alt="The back of the Core with its two magnets shown through the case."><img loading="lazy" src="../assets/img/still-hold.webp" width="900" height="900" alt="The Core in a security holder with four metal arms, a pole and a round base."></figure>
+    </section>
+
+    <section id="api">
+      <h2>Triggering the screen</h2>
+      <p>Your system sends one request with a device ID and a URL. The device shows the URL as a QR code, and the customer’s browser opens it. Maratus never hosts or fetches the page.</p>
+      <div class="code"><pre tabindex="0" aria-label="Example request"><code>POST https://api.maratus.co/v1/devices/<b>{deviceId}</b>/trigger
+Host: api.maratus.co
+Idempotency-Key: <b>{your-unique-key}</b>
+Content-Type: application/json
+
+{
+  "action": "show_qr",
+  "payload": {
+    "url": "<b>https://your-brand.example/receipt/123</b>"
+  }
+}</code></pre></div>
+      <!-- TODO (API): the authentication header line. Left out until the owner confirms the current form. -->
+      <!-- TODO (API): confirm Host and Content-Type against docs.maratus.co before launch. -->
+      <dl>
+        <div><dt>API key</dt><dd>Needs the <code>devices:trigger</code> scope. <code>Idempotency-Key</code> is required.</dd></div>
+        <div><dt>Till labels</dt><dd>If your system knows a till by its label: <code>POST https://api.maratus.co/v1/registers/{registerNumber}/trigger</code></dd></div>
+        <div><dt>Offline</dt><dd>A request to a device that is offline or paused is rejected, so your integration can decide what happens next.</dd></div>
+        <div><dt>Pinned content</dt><dd>A menu, Wi-Fi link or campaign can stay on screen until you change it, for one device, one store or the whole organisation, from the panel.</dd></div>
+        <div><dt>Counting</dt><dd>The panel counts triggers a device has acknowledged. Maratus can’t tell whether a customer scanned. You can, on your own page.</dd></div>
+        <div><dt>Where</dt><dd>Docs at <a href="https://docs.maratus.co" target="_blank" rel="noopener">docs.maratus.co</a>, the API at <a href="https://api.maratus.co" target="_blank" rel="noopener">api.maratus.co</a></dd></div>
+      </dl>
+    </section>
+
+    <section id="paths">
+      <h2>Two ways to integrate</h2>
+      <div class="ways">
+        <div><h3>Your team does it</h3><p>Your developers add the request to the POS, CRM, loyalty or booking system. The work depends on that software.</p></div>
+        <div><h3>We do it for you</h3><p>On request. Bring the people who run your till software to the first conversation.</p></div>
+      </div>
+      <h3 class="sub">In the store</h3>
+      <ol class="steps">
+        <li>The device arrives already registered to your organisation.</li>
+        <li>The installer joins it to the store’s network on its own screen.</li>
+        <li>Head office assigns it to the store from the panel.</li>
+        <li>Your system sends the first link.</li>
+      </ol>
+      <p class="incl">The device is included in the subscription. You don’t buy hardware.</p>
+      <p class="act"><a class="btn" href="mailto:hi@maratus.co?subject=Maratus%20technical">Talk to us</a><a class="text" href="../">Back to the home page</a></p>
+    </section>
+  </div>
+</main>
+
+<footer data-tone="dark">
+  <a class="brand" href="../" aria-label="maratus, home"><svg width="220" height="40" aria-hidden="true"><use href="#lockup"/></svg></a>
+  <ul>
+    <li><a href="../">Home</a></li>
+    <li><a href="../docks/">Docks</a></li>
+    <li><a href="../developers/">Developers</a></li>
+    <li><a href="../pricing/">Pricing</a></li>
+    <li><a href="https://docs.maratus.co" target="_blank" rel="noopener">API docs</a></li>
+    <li><a href="mailto:hi@maratus.co?subject=Maratus">hi@maratus.co</a></li>
+    <li><a href="https://github.com/erenmeren/maratus-site" target="_blank" rel="noopener">This site on GitHub</a></li>
+  </ul>
+  <p>Device images are design renders. The hardware is in development.</p>
+</footer>
+</body>
+</html>

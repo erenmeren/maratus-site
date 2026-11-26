@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Maratus lab (developer tool, do not deploy)</title>
+<link rel="stylesheet" href="../css/base.css">
+<script type="importmap">{"imports":{"three":"../vendor/three/three.module.js","three/addons/":"../vendor/three/addons/"}}</script>
+<style>body{margin:0;background:#f6b8c1}canvas{display:block}</style><canvas id="c"></canvas><span style="font:800 10px Gabarito">.</span><span style="font:700 10px Gabarito">.</span>
+<script type="module">
+import * as S from '../js/stage.js'; import * as THREE from 'three';
+await document.fonts.load('800 20px Gabarito'); await document.fonts.load('600 20px Gabarito'); await document.fonts.ready;
+const dock = new URLSearchParams(location.search).get('dock');   // ?dock=bar, tile or mono: that Dock of the Docks page
+const st = window.st = new S.Stage(document.getElementById('c'), {}); await st.load({ dock: S.DOCKS[dock] || null }); window.S = S; window.THREE = THREE;
+const persp = st.camera;
+/** One pose as a data URL. pose.at: 'core' or 'pads' pivots on that point of the moved Core; pose.ortho: orthographic. */
+window.snap = (w, h, o, screen = 'idle', phone = 'camera', type = 'image/png', q = 0.9, colour = 'retro', mono = false) => {
+  const p = dock ? { ...S.dockPose(dock), ...o } : S.pose(o);
+  if (o.at === 'core') Object.assign(p, S.corePoint(p, S.CORE_C)); else if (o.at === 'pads') Object.assign(p, S.corePoint(p, S.PADS)); else if (Array.isArray(o.at)) Object.assign(p, S.corePoint(p, o.at));
+  if (o.ortho) { const H = 50, c = new THREE.OrthographicCamera(-H * w / h, H * w / h, H, -H, 4, 2000); c.position.z = persp.position.z; c.aspect = w / h; st.camera = c; } else st.camera = persp;
+  if (st.setColour) st.setColour(colour, true);
+  if (mono) { st.M.body.color.copy(st.M.core.color); st.M.accent.color.copy(st.M.core.color); }   // whole Dock in the Core's colour: comparison sheets only
+  st.renderer.setPixelRatio(1); st.renderer.setSize(w, h, false); st.camera.aspect = w / h; st.camera.updateProjectionMatrix();
+  st.show(screen, true); st.phoneUi.to = phone; st.phoneUi.t = 1; st.screen.t = 1; st.paint(); st.dirty = true; st.render(p);
+  return st.canvas.toDataURL(type, q);
+};
+window.ready = true;
+</script></html>

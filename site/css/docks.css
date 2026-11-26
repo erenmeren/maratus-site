@@ -1,0 +1,71 @@
+/* Docks page: three Docks at one scale, each on its own ground from the palette. Nothing is pinned or scrubbed. */
+body{background:var(--pink);--pick-hover:color-mix(in srgb,var(--ink) 10%,transparent);--pick-on:var(--ink);--pick-line:var(--ink);--pick-name:var(--ink-2)}
+.top{position:absolute}
+.open{padding:clamp(124px,12vw,176px) 0 clamp(48px,5vw,80px)}
+h1{font-size:clamp(50px,7.6vw,124px);letter-spacing:-.045em;line-height:.88}
+.note{margin-top:30px;font-weight:800;font-size:clamp(26px,2.5vw,40px);letter-spacing:-.02em;line-height:1.06}
+.lead{margin:14px 0 12px;max-width:31em;font-size:clamp(20px,1.5vw,23px);line-height:1.36}
+.trio{max-width:1360px;margin:0 auto;padding-inline:var(--pad);display:grid;grid-template-columns:repeat(3,1fr)}
+.trio a{display:block;text-align:center;text-decoration:none;font-weight:800;font-size:clamp(22px,2.6vw,40px);letter-spacing:-.03em;border-radius:28px}
+.trio span{display:inline-flex;align-items:center;min-height:44px}
+.trio a:hover span{text-decoration:underline;text-decoration-thickness:4px;text-underline-offset:8px}
+.trio img{margin-bottom:-4%}
+.open .caption{margin-top:26px;color:var(--ink-2)}
+
+.dk{scroll-margin-top:0}
+.dk.bar{background:var(--blush)}
+.dk.tile{background:var(--peach)}
+.dk.mono{background:var(--pink)}
+.dk>.wrap{display:grid;grid-template-columns:minmax(0,56fr) minmax(0,44fr);gap:clamp(24px,4.4vw,72px);align-items:center;padding-block:clamp(56px,6vw,96px)}
+.show{position:relative;container-type:inline-size;width:min(100%,86svh);min-width:min(100%,420px);justify-self:center}
+h2{font-size:27cqw;line-height:.8;letter-spacing:-.05em;text-align:center}
+.turn{position:relative;aspect-ratio:1;margin-top:-13cqw}
+.tile .turn{margin-top:-29cqw}
+.turn img,.turn canvas{position:absolute;inset:0;width:100%;height:100%}
+/* the ground shadow fades out before the picture's edge */
+.turn img,.turn canvas,.trio img,.still.back{-webkit-mask:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent),linear-gradient(0deg,transparent,#000 6%);-webkit-mask-composite:source-in;mask:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent),linear-gradient(0deg,transparent,#000 6%);mask-composite:intersect}
+.turn canvas{display:none}
+.sides{display:flex;justify-content:center;gap:8px;margin-top:-1.5cqw;position:relative}
+.sides button{min-height:48px;padding:0 22px;border:0;border-radius:15px;background:var(--oxblood);color:#fff;font:700 18px/1 var(--sans);cursor:pointer;transition:background-color .2s}
+.sides button:hover{background:var(--ox-hover)}
+.char{font-weight:800;font-size:clamp(28px,2.7vw,44px);line-height:1.04;letter-spacing:-.025em;text-wrap:balance}
+.picker{margin-top:30px}
+.picker legend{font-size:20px}
+.live .picker label:hover:has(:checked){background:var(--pick-on)}
+.live .picker label:has(:checked) .sw{border-color:#fff}
+dl{margin-top:32px;display:grid;gap:15px}
+dl div{display:grid;grid-template-columns:132px 1fr;gap:18px}
+dt{font-weight:800;letter-spacing:-.01em}
+dd{margin:0;line-height:1.36;max-width:28em}
+.end{background:var(--pink);padding:0 0 var(--gap)}
+
+html:not(.live) .live-only{display:none!important}
+.live .still{display:none}
+.live .turn canvas{display:block;opacity:0;transition:opacity .4s;touch-action:pan-y;cursor:grab}
+.live .turn canvas:active{cursor:grabbing}
+.live .ready canvas{opacity:1}
+.live .turn .poster{transition:opacity .3s .12s}
+.live .ready .poster{opacity:0}
+/* stills: front and back picture one above the other */
+.still.back{width:78%;margin:-8cqw auto 0}
+.tile .still.back{margin-top:-26cqw}
+
+.ctl{position:fixed;z-index:9;right:var(--pad);bottom:22px}
+html:not(.js) .ctl,html.cannot .ctl{display:none}
+.ctl button{width:52px;height:52px;padding:0;display:grid;place-items:center;border-radius:17px;border:0;background:var(--oxblood);color:#fff;cursor:pointer;box-shadow:0 0 0 2px color-mix(in srgb,var(--on-ox) 50%,transparent)}
+.ctl svg{fill:currentColor}
+.ctl .i-play,html.paused .ctl .i-pause{display:none}
+html.paused .ctl .i-play{display:block}
+
+@media (min-width:981px) and (max-width:1150px){.live .dots{grid-template-columns:repeat(4,64px)}}
+@media (max-width:980px){
+  .dk>.wrap{grid-template-columns:minmax(0,1fr)}
+  .show{width:min(100%,640px)}
+  .sides{margin-bottom:8px}
+}
+@media (max-width:640px){
+  .open{padding-top:112px}
+  .trio{padding-inline:8px}
+  .live .dots{grid-template-columns:repeat(4,64px);gap:6px}
+  dl div{grid-template-columns:1fr;gap:2px}
+}

@@ -1,0 +1,180 @@
+/* TEMPORARY palette trial. Remove this file, js/palette-trial.js and the marked lines in the five pages. See DESIGN.md.
+   "Current" is css/base.css, untouched. Every other palette sets the same custom properties and nothing else. */
+/* Bubblegum */
+html[data-palette="bubblegum"]{
+  --pink:#ff9fd2; --rose:#ff78bc; --blush:#fff0f8; --tangerine:#ff8c4a; --peach:#ffcb94; --orange:#e8431a; --mark:#f0501a;
+  --oxblood:#5e0740; --ink:#44052e; --ink-2:#5f0f42; --on-ox:#ffe6f3; --on-ox-2:#ffb9de; --night:#2a021c;
+  --ox-hover:#7e1e59; --pick-hover:#7e255d; --ghost:#751751; --blush-2:#ffe0f0; --line:#ffb7dd; --peach-2:#ffb97f; --peach-lite:#ffe2c4; --peach-line:#ffac6f; --peach-wire:#cb6642;
+  --night-line:#4c1536; --code:#ffe6f3; --code-2:#d494b7; --line-ox:#8e2965;
+}
+/* Hot pink */
+html[data-palette="hot"]{
+  --pink:#ff66b3; --rose:#ff3a96; --blush:#ffe4f1; --tangerine:#ff7d24; --peach:#ffbf75; --orange:#e23400; --mark:#ffb326;
+  --oxblood:#52022b; --ink:#33001b; --ink-2:#480326; --on-ox:#ffe1ef; --on-ox-2:#ffacd3; --night:#250013;
+  --ox-hover:#750d40; --pick-hover:#751646; --ghost:#6a0a3a; --blush-2:#ffcbe5; --line:#ff8cc6; --peach-2:#ffad5e; --peach-lite:#ffdcb3; --peach-line:#ff9e4d; --peach-wire:#c65a21;
+  --night-line:#480928; --code:#ffe1ef; --code-2:#d38aad; --line-ox:#86134b;
+}
+/* Coral */
+html[data-palette="coral"]{
+  --pink:#ff8b80; --rose:#ff6f6c; --blush:#fff0eb; --tangerine:#ffa826; --peach:#ffd98f; --orange:#d63608; --mark:#c62a00;
+  --oxblood:#5c0916; --ink:#3f040d; --ink-2:#560a17; --on-ox:#ffe5e0; --on-ox-2:#ffb9b1; --night:#2a0208;
+  --ox-hover:#7d1d27; --pick-hover:#7d232b; --ghost:#731722; --blush-2:#ffdcd6; --line:#ffa9a0; --peach-2:#ffcb72; --peach-lite:#ffeac1; --peach-line:#ffc15b; --peach-wire:#c97a1f;
+  --night-line:#4c1318; --code:#ffe5e0; --code-2:#d4948f; --line-ox:#8d2830;
+}
+/* Magenta */
+html[data-palette="magenta"]{
+  --pink:#f560d6; --rose:#ea50c4; --blush:#ffeafb; --tangerine:#ff8838; --peach:#ffc78a; --orange:#e0400a; --mark:#ffb02e;
+  --oxblood:#4a003f; --ink:#2f0028; --ink-2:#420037; --on-ox:#ffe3f8; --on-ox-2:#f9aee8; --night:#21001b;
+  --ox-hover:#6a105a; --pick-hover:#6c135d; --ghost:#600b52; --blush-2:#fdcef4; --line:#f889e1; --peach-2:#ffb573; --peach-lite:#ffe0bf; --peach-line:#ffa861; --peach-wire:#c56234;
+  --night-line:#410d36; --code:#ffe3f8; --code-2:#ce8bbf; --line-ox:#7a1867;
+}
+/* Punch */
+html[data-palette="punch"]{
+  --pink:#ff4372; --rose:#ff8fae; --blush:#fff2f4; --tangerine:#ff8a0a; --peach:#ffc93f; --orange:#df3200; --mark:#ffcb3d;
+  --oxblood:#3b0016; --ink:#22000d; --ink-2:#380015; --on-ox:#ffe6ea; --on-ox-2:#ffb0c2; --night:#1b0009;
+  --ox-hover:#621d34; --pick-hover:#620d28; --ghost:#56142b; --blush-2:#ffcfda; --line:#ff7899; --peach-2:#ffb730; --peach-lite:#ffe195; --peach-line:#ffaa25; --peach-wire:#c1630b;
+  --night-line:#3f1723; --code:#ffe6ea; --code-2:#d18d9d; --line-ox:#762b44;
+}
+/* Mustard */
+html[data-palette="mustard"]{
+  --pink:#dfb004; --rose:#f79ba4; --blush:#ffe78f; --tangerine:#f57a1c; --peach:#ffc689; --orange:#cf3f0c; --mark:#c8330a;
+  --oxblood:#4d0a1c; --ink:#350611; --ink-2:#541022; --on-ox:#fff0c2; --on-ox-2:#f3d379; --night:#26030c;
+  --ox-hover:#6f2737; --pick-hover:#6a2b17; --ghost:#651e2f; --blush-2:#f9dc73; --line:#e9c12e; --peach-2:#fcb16a; --peach-lite:#ffe0be; --peach-line:#faa053; --peach-wire:#bf5a19;
+  --night-line:#471b24; --code:#fff0c2; --code-2:#caa963; --line-ox:#803645;
+}
+/* Signal */
+html[data-palette="signal"]{
+  --pink:#ff6210; --rose:#ff9fb0; --blush:#ffdcc0; --tangerine:#ffb300; --peach:#ffd56b; --orange:#cc3300; --mark:#ffd42e;
+  --oxblood:#4a0712; --ink:#2c0309; --ink-2:#43070f; --on-ox:#ffe7d8; --on-ox-2:#ffbf98; --night:#210206;
+  --ox-hover:#6e1912; --pick-hover:#6e1912; --ghost:#631412; --blush-2:#ffc49d; --line:#ff8745; --peach-2:#ffcb4d; --peach-lite:#ffe8ae; --peach-line:#ffc436; --peach-wire:#c48203;
+  --night-line:#451108; --code:#ffe7d8; --code-2:#d3997b; --line-ox:#802211;
+}
+/* Parrot */
+html[data-palette="parrot"]{
+  --pink:#35c13c; --rose:#ffa3bd; --blush:#dff8cf; --tangerine:#ff9326; --peach:#ffdf6b; --orange:#d0410a; --mark:#ffd83a;
+  --oxblood:#07351d; --ink:#032012; --ink-2:#0a3a20; --on-ox:#e4fbd9; --on-ox-2:#a9e6a0; --night:#02180c;
+  --ox-hover:#105123; --pick-hover:#105123; --ghost:#0d4921; --blush-2:#bdedb2; --line:#68d268; --peach-2:#ffca58; --peach-lite:#ffedae; --peach-line:#ffb949; --peach-wire:#b87320;
+  --night-line:#0a3314; --code:#e4fbd9; --code-2:#88bd82; --line-ox:#155f26;
+}
+/* Electric */
+html[data-palette="electric"]{
+  --pink:#338aff; --rose:#ff9cc2; --blush:#e0edff; --tangerine:#ff8c2e; --peach:#ffd27f; --orange:#d8430a; --mark:#ffc73a;
+  --oxblood:#0a1250; --ink:#050a36; --ink-2:#0a1548; --on-ox:#e2edff; --on-ox-2:#a9ccff; --night:#040722;
+  --ox-hover:#122a73; --pick-hover:#122a73; --ghost:#102369; --blush-2:#bdd9ff; --line:#67a8ff; --peach-2:#ffbe68; --peach-lite:#ffe6b9; --peach-line:#ffaf57; --peach-wire:#b96830;
+  --night-line:#0c1c45; --code:#e2edff; --code-2:#88a5d3; --line-ox:#163685;
+}
+
+/* the circles: the page colour, with a ring in the palette's ink */
+.pt [data-p="current"]{--p:#f6b8c1;--i:#3a0816}
+.pt [data-p="bubblegum"]{--p:#ff9fd2;--i:#44052e}
+.pt [data-p="hot"]{--p:#ff66b3;--i:#33001b}
+.pt [data-p="coral"]{--p:#ff8b80;--i:#3f040d}
+.pt [data-p="magenta"]{--p:#f560d6;--i:#2f0028}
+.pt [data-p="punch"]{--p:#ff4372;--i:#22000d}
+.pt [data-p="mustard"]{--p:#dfb004;--i:#350611}
+.pt [data-p="signal"]{--p:#ff6210;--i:#2c0309}
+.pt [data-p="parrot"]{--p:#35c13c;--i:#032012}
+.pt [data-p="electric"]{--p:#338aff;--i:#050a36}
+/* the eleventh: your own colour, in a ring of the others (Punch, Signal, Mustard, Parrot, Electric, Hot pink) */
+.pt [data-p="custom"]{--p:#fff}
+.pt [data-p="custom"]::before{background:radial-gradient(circle,var(--p) 42%,transparent 45%),conic-gradient(#ff4372,#ff6210,#dfb004,#35c13c,#338aff,#ff66b3,#ff4372);box-shadow:none}
+.pt{display:flex;flex:none}
+.pt button{position:relative;width:28px;height:44px;padding:0;border:0;background:none;color:inherit;cursor:pointer}
+.pt button::before{content:"";position:absolute;left:50%;top:50%;width:18px;height:18px;margin:-9px;border-radius:50%;background:var(--p);box-shadow:inset 0 0 0 2px var(--i)}
+.pt button:hover::before{transform:scale(1.15)}
+.pt button[aria-pressed=true]::after{content:"";box-sizing:border-box;position:absolute;left:50%;top:50%;width:26px;height:26px;margin:-13px;border-radius:50%;border:2px solid currentColor}
+.pt :focus-visible{outline-width:3px;outline-offset:-2px}
+.top>.pt{margin-left:8px}
+.menu .pt{display:none}
+/* two rows of five where the bar also holds the links; the eleventh stands beside them */
+@media (min-width:1191px){
+  .top>.pt{display:grid;grid-template-columns:repeat(6,auto)}
+  .top>.pt button{height:28px}
+  .top>.pt [data-p="custom"]{grid-area:1/6/3/7;height:56px}
+}
+/* the bar is full between the Menu width and 1420 px: a little tighter there, only for the trial */
+@media (min-width:1191px) and (max-width:1420px){
+  .top nav{gap:0}
+  .top nav a{font-size:15.5px;padding:0 6px}
+  .top .brand svg{width:143px;height:26px}
+  .top-btn{font-size:15.5px;padding:0 14px;margin-left:4px}
+  .top>.pt{margin-left:4px}
+  .pt button{width:24px}
+  .pt button::before{width:16px;height:16px;margin:-8px}
+  .pt button[aria-pressed=true]::after{width:24px;height:24px;margin:-12px}
+}
+@media (max-width:1190px){.top:has(.menu[open])>.pt{visibility:hidden}}
+/* on phones the circles are the first row of the menu */
+@media (max-width:1190px){
+  .menu .pt{display:grid;grid-template-columns:repeat(6,44px);margin:0 0 6px -10px}
+  .menu .pt button{width:44px}
+  .menu .pt button::before{width:24px;height:24px;margin:-12px}
+  .menu .pt button::after{width:32px!important;height:32px!important;margin:-16px!important}
+}
+@media (max-width:640px){.top>.pt{display:none}}
+
+
+/* ---------- your own colour: the panel. Its colours are fixed, so it stays readable whatever is chosen. */
+.pt-panel{position:absolute;inset:calc(100% - 4px) var(--pad) auto auto;margin:0;box-sizing:border-box;width:360px;max-width:calc(100vw - 2*var(--pad));max-height:calc(100svh - 96px);overflow-y:auto;padding:20px 22px 22px;border:0;border-radius:28px;background:#fff;color:#22090f;box-shadow:0 0 0 2px #22090f;font:500 16px/1.35 var(--sans);letter-spacing:0}
+.pt-head{display:flex;justify-content:space-between;align-items:center;margin:-6px 0 6px}
+.pt-head strong{font-weight:800;font-size:22px;letter-spacing:-.02em}
+.pt-panel label{font-weight:700}
+.pt-panel button{min-height:44px;padding:0;border:0;background:none;color:inherit;font:700 16px/1 var(--sans);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:2px;cursor:pointer}
+.pt-panel button:hover{text-underline-offset:7px}
+.pt-panel :focus-visible{outline-width:3px;outline-offset:2px}
+.pt-f{display:grid;grid-template-columns:1fr 44px 96px;gap:0 8px;align-items:center;margin-top:8px;position:relative}
+.pt-f:has(.pt-auto:not([hidden])) label{align-self:start;padding-top:1px}
+.pt-panel .pt-auto{position:absolute;left:0;bottom:0;min-height:24px;font-size:14px;font-weight:500}
+.pt-panel input[type=color]{width:44px;height:44px;padding:0;border:2px solid #22090f;border-radius:14px;background:none;cursor:pointer;overflow:hidden}
+.pt-panel input[type=color]::-webkit-color-swatch-wrapper{padding:0}
+.pt-panel input[type=color]::-webkit-color-swatch{border:0;border-radius:0}
+.pt-panel input[type=color]::-moz-color-swatch{border:0;border-radius:0}
+.pt-panel :is(input[type=text],textarea){box-sizing:border-box;width:100%;min-height:44px;padding:0 12px;border:2px solid #8d7379;border-radius:14px;background:#fff;color:inherit;font:500 16px/1.3 var(--sans);font-variant-numeric:tabular-nums}
+.pt-panel .pt-f input[type=text]{padding:0 9px}
+.pt-panel [aria-invalid=true]{border-color:#c21f1f!important}
+.pt-panel textarea{display:block;margin-top:4px;padding:10px 12px;font-size:14px;resize:none;overflow-wrap:anywhere;height:98px}
+.pt-strip{display:flex;height:24px;margin-top:14px;border-radius:10px;overflow:hidden;box-shadow:0 0 0 1px #22090f33}
+.pt-strip i{flex:1}
+.pt-ratio{display:flex;align-items:center;gap:8px;margin:10px 0 8px!important;font-variant-numeric:tabular-nums}
+.pt-ratio::before{content:"✓";flex:none;width:22px;height:22px;border-radius:50%;background:#12703a;color:#fff;font:800 14px/22px var(--sans);text-align:center}
+.pt-ratio[data-pass=false]{font-weight:700}
+.pt-ratio[data-pass=false]::before{content:"!";background:#c21f1f}
+.pt-note:not(:empty){font-size:14px;margin-bottom:8px!important}
+.pt-panel .pt-act{display:flex;gap:18px;align-items:center;margin-top:10px}
+.pt-panel .pt-copy{padding:0 20px;border-radius:15px;background:#22090f;color:#fff;text-decoration:none}
+.pt-panel .pt-copy:hover{background:#4a1c27}
+.pt-said,.pt-bad{font-size:15px;min-height:21px;margin:4px 0!important}
+#pt-in{margin-top:4px}
+.pt-bad{margin-bottom:0!important}
+@media (max-width:1190px){
+  .menu .pt-panel{position:static;width:100%;max-width:none;max-height:none;margin:6px 0 14px}
+  /* the menu scrolls with the panel in it: the logo and "Menu" keep their own ground */
+  .menu nav:has(.pt-panel[open])::before{content:"";position:sticky;top:-72px;z-index:1;height:72px;margin:-72px calc(-1*var(--pad)) 0;background:var(--pink)}
+}
+
+/* ---------- your own colour: where a colour of any lightness needs more than the tokens.
+   --pink-fg is the page colour as text on the dark side; --page-ink is the text on the page colour. */
+html[data-palette="custom"] :is(.bridge,.device,.p-tickets,.p-idea,.vcard,.path,.who,.term,.slip,.sheet,.line,.pin-demo,.ctl[data-tone=dark],.top[data-tone=dark] .top-btn){--pink:var(--pink-fg)}
+html[data-palette="custom"] .theirs{--pink:var(--page)}
+html[data-palette="custom"]{--page:var(--pink)}
+/* a dark page colour: light text on it, and buttons turned round. Every other ground stays light with dark text, or dark with light. */
+html[data-page="dark"] :is(.hero,.how,.close,.open,.dk.mono,.end,.code-sec,.dims,.view,.menu nav){--ink:var(--page-ink);--ink-2:var(--page-ink-2);color:var(--ink)}
+html[data-page="dark"].live .theirs{--ink:var(--page-ink);color:var(--ink)}
+html[data-page="dark"] .dk.mono{--pick-hover:color-mix(in srgb,var(--ink) 18%,transparent);--pick-on:var(--ink);--pick-line:var(--ink);--pick-name:var(--ink-2)}
+html[data-page="dark"] .dk.mono .picker label:has(:checked) .sw{border-color:var(--pink)}
+html[data-page="dark"] :is(.hero .btn:not(.lite),.close .btn,.open .btn,.end .btn,.mono .sides button){background:var(--page-ink);color:var(--pink)}
+html[data-page="dark"] :is(.hero .btn:not(.lite),.close .btn,.open .btn,.end .btn,.mono .sides button):hover{background:var(--page-ink-2)}
+html[data-page="dark"].live .nums span{color:var(--oxblood)}   /* the step's text runs over the numeral */
+/* the bar: light text while it stands on the page colour (the home page names the ground under it in --hb) */
+html[data-page="dark"] .top:not([data-tone=dark]):not([style*="--hb"]),html[data-page="dark"] .top[style*="--pink"]:not([data-tone=dark]),html[data-page="dark"] .top:has(.menu[open]){--ink:var(--page-ink);color:var(--ink)}
+html[data-page="dark"] .top:not([data-tone=dark]):not([style*="--hb"]) .top-btn,html[data-page="dark"] .top[style*="--pink"]:not([data-tone=dark]) .top-btn{background:var(--page-ink);color:var(--pink)}
+html[data-page="dark"] .menu[open]::before{background:rgb(0 0 0/.4)}
+html[data-page="dark"] .top[style*="--hb"]:not([style*="--pink"]):not([data-tone=dark]):not(:has(.menu[open])),html[data-page="dark"] body:has(.tech) .top:not(:has(.menu[open])){--disc:var(--orange)}
+/* the technical page is on blush; its picture is on the page colour */
+html[data-page="dark"]:not(.live) body:has(.tech) .top:not(:has(.menu[open])){color:var(--oxblood)}
+html[data-page="dark"]:not(.live) body:has(.tech) .top .top-btn{background:var(--oxblood);color:#fff}
+@media (min-width:981px){
+  html[data-page="dark"].live body:has(.tech) .top{background:var(--blush)}
+  html[data-page="dark"].live body:has(.tech) .top:not(:has(.menu[open])){color:var(--oxblood)}
+  html[data-page="dark"].live body:has(.tech) .top .top-btn{background:var(--oxblood);color:#fff}
+}

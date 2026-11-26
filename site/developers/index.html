@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maratus | Developers</title>
+<meta name="description" content="One request with a device ID and a link puts a QR code on the counter. Endpoints, code, pins, auth and errors of the Maratus API.">
+<meta name="theme-color" content="#f6b8c1">
+<link rel="icon" href="../assets/logo/favicon-32.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="preload" href="../assets/fonts/gabarito-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/dev.css">
+<script type="importmap">{"imports":{"three":"../vendor/three/three.module.js","three/addons/":"../vendor/three/addons/"}}</script>
+<script>(function(d){try{var c=document.createElement('canvas');if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&localStorage.getItem('motion')!=='off'&&innerHeight>=480&&c.getContext('webgl2'))d.classList.add('live')}catch(e){}})(document.documentElement)</script>
+<script type="module" src="../js/dev.js" onerror="document.documentElement.classList.remove('live')"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg class="defs" width="0" height="0" aria-hidden="true"><symbol id="lockup" viewBox="0 -788 4412.7 800"><g transform="translate(303.86 -291.86) scale(7.15809)"><path fill="var(--disc)" fill-rule="evenodd" d="M-11.34 -46.2A1.3 1.3 0 0 1 -12.7 -48.07A39 39 0 1 1 49.64 -2.78A1.3 1.3 0 0 1 47.44 -3.49L44.16 -24.21A30.4 30.4 0 0 0 9.38 -49.48Z"/><path fill="currentColor" fill-rule="evenodd" d="M6.26 39.51L-10.53 42.17A23 23 0 0 1 -36.85 23.05L-42.17 -10.53A23 23 0 0 1 -23.05 -36.85L10.53 -42.17A23 23 0 0 1 36.85 -23.05L42.17 10.53A23 23 0 0 1 23.05 36.85Z"/></g><path fill="currentColor" transform="translate(930.7 0) scale(1)" d="M14 0L108 0C115.73 0 122 -6.27 122 -14L122 -486C122 -493.73 115.73 -500 108 -500L14 -500C6.27 -500 0 -493.73 0 -486L0 -14C0 -6.27 6.27 0 14 0ZM60.36 -220L108 -220C115.73 -220 122 -226.27 122 -234L122 -300C122 -357.44 160.05 -404 207 -404C253.95 -404 292 -348.49 292 -280L292 -14C292 -6.27 298.27 0 306 0L400 0C407.73 0 414 -6.27 414 -14L414 -280C414 -407.03 336.64 -510 241.21 -510C133.59 -510 46.36 -398.08 46.36 -260L46.36 -234C46.36 -226.27 52.63 -220 60.36 -220ZM352.36 -220L400 -220C407.73 -220 414 -226.27 414 -234L414 -300C414 -357.44 452.05 -404 499 -404C545.95 -404 584 -348.49 584 -280L584 -14C584 -6.27 590.27 0 598 0L692 0C699.73 0 706 -6.27 706 -14L706 -280C706 -407.03 628.64 -510 533.21 -510C425.59 -510 338.36 -398.08 338.36 -260L338.36 -234C338.36 -226.27 344.63 -220 352.36 -220ZM1286.52 -250C1286.52 -393.6 1170 -510 1026.26 -510C882.52 -510 766 -393.6 766 -250C766 -106.4 882.52 10 1026.26 10C1170 10 1286.52 -106.4 1286.52 -250ZM1206 -250C1206 -164.95 1133.72 -96 1044.56 -96C955.4 -96 883.12 -164.95 883.12 -250C883.12 -335.05 955.4 -404 1044.56 -404C1133.72 -404 1206 -335.05 1206 -250ZM1220 0L1314 0C1321.73 0 1328 -6.27 1328 -14L1328 -486C1328 -493.73 1321.73 -500 1314 -500L1220 -500C1212.27 -500 1206 -493.73 1206 -486L1206 -14C1206 -6.27 1212.27 0 1220 0ZM1414 0L1508 0C1515.73 0 1522 -6.27 1522 -14L1522 -486C1522 -493.73 1515.73 -500 1508 -500L1414 -500C1406.27 -500 1400 -493.73 1400 -486L1400 -14C1400 -6.27 1406.27 0 1414 0ZM1456.16 -240L1508 -240C1515.73 -240 1522.33 -247.81 1522.75 -257.43C1529.22 -332.78 1577.21 -392.66 1637.67 -400.91C1645.59 -401.45 1652 -408.15 1652 -415.88L1652 -496C1652 -503.73 1645.46 -509.72 1637.39 -509.38C1530.63 -500.27 1446.36 -392.1 1446.36 -260L1446.36 -249.8C1446.36 -244.39 1450.75 -240 1456.16 -240ZM2194.52 -250C2194.52 -393.6 2078 -510 1934.26 -510C1790.52 -510 1674 -393.6 1674 -250C1674 -106.4 1790.52 10 1934.26 10C2078 10 2194.52 -106.4 2194.52 -250ZM2114 -250C2114 -164.95 2041.72 -96 1952.56 -96C1863.4 -96 1791.12 -164.95 1791.12 -250C1791.12 -335.05 1863.4 -404 1952.56 -404C2041.72 -404 2114 -335.05 2114 -250ZM2128 0L2222 0C2229.73 0 2236 -6.27 2236 -14L2236 -486C2236 -493.73 2229.73 -500 2222 -500L2128 -500C2120.27 -500 2114 -493.73 2114 -486L2114 -14C2114 -6.27 2120.27 0 2128 0ZM2350 -166.92C2350 -74.73 2424.73 0 2516.92 0L2540 0C2547.73 0 2554 -6.27 2554 -14L2554 -96.2C2554 -101.61 2549.61 -106 2544.2 -106L2534 -106C2499.76 -106 2472 -133.76 2472 -168L2472 -624C2472 -631.73 2465.73 -638 2458 -638L2364 -638C2356.27 -638 2350 -631.73 2350 -624L2350 -166.92ZM2288 -396.12L2540 -396.12C2547.73 -396.12 2554 -402.39 2554 -410.12L2554 -486C2554 -493.73 2547.73 -500 2540 -500L2288 -500C2280.27 -500 2274 -493.73 2274 -486L2274 -410.12C2274 -402.39 2280.27 -396.12 2288 -396.12ZM3032 -500L2938 -500C2930.27 -500 2924 -493.73 2924 -486L2924 -14C2924 -6.27 2930.27 0 2938 0L3032 0C3039.73 0 3046 -6.27 3046 -14L3046 -486C3046 -493.73 3039.73 -500 3032 -500ZM2985.64 -280L2938 -280C2930.27 -280 2924 -273.73 2924 -266L2924 -200C2924 -142.56 2881.02 -96 2828 -96C2774.98 -96 2732 -151.51 2732 -220L2732 -486C2732 -493.73 2725.73 -500 2718 -500L2624 -500C2616.27 -500 2610 -493.73 2610 -486L2610 -220C2610 -92.97 2691.99 10 2793.13 10C2907.19 10 2999.64 -101.92 2999.64 -240L2999.64 -266C2999.64 -273.73 2993.37 -280 2985.64 -280ZM3452.99 -380.82C3430.91 -459.72 3371.87 -510 3290 -510C3188.24 -510 3111.44 -445 3111.44 -352.5C3111.44 -265 3170.96 -219.68 3290 -195.88C3328.4 -185.38 3358.94 -175 3358.94 -149C3358.94 -128 3323.79 -90.7 3286.16 -90.7C3252.99 -90.7 3219.1 -117.66 3204.01 -148.02C3201.24 -154.86 3193.24 -158.95 3186.16 -157.15L3115.89 -139.36C3108.55 -137.51 3104.43 -129.18 3106.67 -120.77C3131.37 -39.73 3197.73 10 3290 10C3399.44 10 3472.4 -54 3472.4 -149C3472.4 -237.5 3409.04 -282.32 3290 -306.12C3251.6 -316.62 3224.9 -326.5 3224.9 -352.5C3224.9 -373.5 3256.21 -409.3 3293.84 -409.3C3319.82 -409.3 3349.17 -385.86 3362.07 -360.06C3364.66 -353.48 3372.33 -349.12 3379.19 -350.32L3442.87 -361.51C3450.7 -362.89 3455.23 -371.53 3452.99 -380.82Z"/></symbol></svg>
+<header class="top" data-tone="light">
+  <a class="brand" href="../" aria-label="maratus, home"><svg width="176" height="32" aria-hidden="true"><use href="#lockup"/></svg></a>
+  <nav aria-label="Main">
+    <a href="../#hands">What it hands over</a>
+    <a href="../#how">How it works</a>
+    <a href="../#places">Places</a>
+    <a href="../#device">The device</a>
+    <a href="../docks/">Docks</a>
+    <a href="../technical/">Technical</a>
+    <a href="./" aria-current="page">Developers</a>
+    <a href="../pricing/">Pricing</a>
+  </nav>
+  <a class="btn top-btn" href="mailto:hi@maratus.co?subject=Maratus">Talk to us</a>
+  <details class="menu">
+    <summary>Menu</summary>
+    <nav aria-label="Main, small screens">
+      <a href="../#hands">What it hands over</a>
+      <a href="../#how">How it works</a>
+      <a href="../#places">Places</a>
+      <a href="../#device">The device</a>
+      <a href="../docks/">Docks</a>
+      <a href="../technical/">Technical</a>
+      <a href="./" aria-current="page">Developers</a>
+      <a href="../pricing/">Pricing</a>
+      <a href="mailto:hi@maratus.co?subject=Maratus">Talk to us</a>
+    </nav>
+  </details>
+</header>
+
+<div class="ctl"><button type="button" id="motion" aria-pressed="false" aria-label="Pause motion" title="Pause motion"><svg class="i-pause" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 1h4v16H3zM11 1h4v16h-4z"/></svg><svg class="i-play" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 1l12 8-12 8z"/></svg></button></div>
+
+<main id="main">
+  <section class="hero" id="top" data-tone="light">
+    <div class="wrap">
+      <h1><span>One request puts</span> <span>a code on the counter</span></h1>
+      <div class="sub">
+        <p class="lead">Send a device ID and a link. The device shows the link as a QR code, and your customer opens it on their own phone.</p>
+        <p class="act"><a class="btn" href="https://docs.maratus.co" target="_blank" rel="noopener">Read the API reference</a><a class="text" href="mailto:hi@maratus.co?subject=Maratus%20API">hi@maratus.co</a></p>
+      </div>
+      <div class="console">
+        <div class="term">
+          <pre tabindex="0" aria-label="Example trigger request and its response"><code><span class="ln"><i class="k">POST</i> /v1/devices/<i class="v">DEVICE_ID</i>/trigger</span><span class="ln"><i class="d">Host:</i> api.maratus.co</span><span class="ln"><i class="d">Authorization:</i> Bearer <i class="v">YOUR_API_KEY</i></span><span class="ln"><i class="d">Idempotency-Key:</i> <i class="v">receipt-8812</i></span><span class="ln"><i class="d">Content-Type:</i> application/json</span><span class="ln"> </span><span class="ln">{</span><span class="ln">  <i class="d">"action":</i> <i class="s">"show_qr"</i>,</span><span class="ln">  <i class="d">"payload":</i> {</span><span class="ln">    <i class="d">"url":</i> <i class="s">"https://example.com/receipt/8812"</i></span><span class="ln">  }</span><span class="ln">}</span><span class="ln res gap"><i class="k">202</i> Accepted</span><span class="ln res">{ <i class="d">"id":</i> <i class="s">"cmd_4Qp0dN7hZk2bWm9xYc1aE"</i>,</span><span class="ln res">  <i class="d">"status":</i> <i class="s">"queued"</i> }</span></code></pre>
+          <p class="term-foot live-only"><button type="button" id="again" disabled>Send it again</button></p>
+        </div>
+        <div class="stand">
+          <div class="dev">
+            <img class="still" src="../assets/img/dev-code.webp" width="900" height="900" loading="lazy" alt="Design render of the device on its Dock. Its screen shows a QR code for the link in the request.">
+            <img class="poster live-only" data-src="../assets/img/dev-idle.webp" width="900" height="900" alt="">
+            <canvas class="live-only" aria-hidden="true"></canvas>
+          </div>
+        </div>
+        <span class="wire live-only" aria-hidden="true"></span>
+      </div>
+      <p class="caption">Design render from the CAD. The code on its screen is the link in the request.</p>
+    </div>
+  </section>
+
+  <section class="path" id="path" data-tone="dark">
+    <div class="path-in">
+      <h2>The path of a request</h2>
+      <div class="win live-only" aria-hidden="true">
+        <div class="pan"><img data-srcset="../assets/dev/counter-1400.webp 1400w, ../assets/dev/counter.webp 2600w" width="2600" height="1451" alt=""></div>
+        <div class="dim"></div>
+        <div class="word">api.maratus.co</div>
+        <div class="over"><img data-srcset="../assets/dev/phone-900.webp 900w, ../assets/dev/phone.webp 1500w" width="1500" height="1862" alt=""></div>
+      </div>
+      <ol class="stops">
+        <li>
+          <div class="say"><h3>Your till sends a link</h3><p>The POS, CRM, loyalty or booking system makes one request with a device ID and a URL. If it knows the register and not the device, it sends the register number instead.</p></div>
+          <pre class="slip"><code><i class="k">POST</i> /v1/devices/<i class="v">DEVICE_ID</i>/trigger
+<i class="d">"url":</i> <i class="s">"https://example.com/receipt/8812"</i></code></pre>
+          <figure class="still till"><img loading="lazy" src="../assets/dev/counter-1400.webp" width="1400" height="781" alt="A till on a shop counter, seen from the customer’s side."><figcaption>Illustration</figcaption></figure>
+        </li>
+        <li>
+          <div class="say"><h3>The API checks the key and the device</h3><p>A device that is paused, or has not checked in for 15 minutes, gets <code>409 device_offline</code> and nothing is shown. Otherwise the command is published to the device. <code>202</code> means published, which is a moment before the code is on screen.</p></div>
+          <pre class="slip"><code><i class="k">202</i> Accepted
+{ <i class="d">"id":</i> <i class="s">"cmd_4Qp0dN7hZk2bWm9xYc1aE"</i>,
+  <i class="d">"status":</i> <i class="s">"queued"</i> }</code></pre>
+        </li>
+        <li>
+          <div class="say"><h3>The device shows the code</h3><p>An online device typically shows it within a few seconds, then goes back to its idle screen after your organization’s QR timeout. A command expires 60 seconds after it is accepted, so nothing appears late.</p></div>
+          <pre class="slip"><code><i class="d">"action":</i> <i class="s">"show_qr"</i></code></pre>
+          <figure class="still scan"><img loading="lazy" src="../assets/dev/counter-1400.webp" width="1400" height="781" alt="The device on the counter showing a QR code, and a customer’s hand with a phone."><figcaption>Illustration</figcaption></figure>
+        </li>
+        <li>
+          <div class="say"><h3>The phone opens your own link</h3><p>The customer’s browser goes straight to your URL. You host the page, so what it shows, and counting who opened it, stays with you. Maratus can’t tell whether a customer scanned.</p></div>
+          <pre class="slip"><code><i class="k">GET</i> /receipt/8812
+<i class="d">Host:</i> example.com</code></pre>
+          <figure class="still"><img loading="lazy" src="../assets/dev/phone-900.webp" srcset="../assets/dev/phone-900.webp 900w, ../assets/dev/phone.webp 1500w" sizes="(max-width:860px) 100vw, 45vw" width="1500" height="1862" alt="A customer’s phone beside the device, showing a receipt page it has just opened."><figcaption>Illustration</figcaption></figure>
+        </li>
+      </ol>
+      <div class="rail live-only" aria-hidden="true"><span class="fill"></span><b>Your till</b><b>api.maratus.co</b><b>The device</b><b>The phone</b></div>
+      <p class="caption live-only ill">Illustration</p>
+    </div>
+  </section>
+
+  <section class="calls-sec" id="calls" data-tone="light">
+    <div class="wrap">
+      <h2>What you can call</h2>
+      <p class="lead">Nine calls, all under <code>https://api.maratus.co/v1</code>.</p>
+      <div class="group">
+        <div class="about"><h3>Trigger</h3><p>Show a code now. Scope <code>devices:trigger</code>. <code>Idempotency-Key</code> is required: use a new value for each trigger and the same value when you retry it.</p></div>
+        <ul class="calls">
+          <li><code class="m">POST</code><code class="p">/devices/{deviceId}/trigger</code><span>Trigger a device</span></li>
+          <li><code class="m">POST</code><code class="p">/registers/<wbr>{registerNumber}<wbr>/trigger</code><span>Trigger a device by register number</span></li>
+        </ul>
+      </div>
+      <div class="group">
+        <div class="about"><h3>Pin</h3><p>The code an idle device shows between triggers. Scope <code>devices:pin</code>.</p></div>
+        <ul class="calls">
+          <li><code class="m">PUT</code><code class="p">/devices/{deviceId}/pin</code><span>Set a device’s pin</span></li>
+          <li><code class="m">DELETE</code><code class="p">/devices/{deviceId}/pin</code><span>Reset a device’s pin to inherit</span></li>
+          <li><code class="m">PUT</code><code class="p">/stores/{storeId}/pin</code><span>Set a store’s pin</span></li>
+          <li><code class="m">DELETE</code><code class="p">/stores/{storeId}/pin</code><span>Reset a store’s pin to inherit</span></li>
+          <li><code class="m">PUT</code><code class="p">/org/pin</code><span>Set the organization pin</span></li>
+          <li><code class="m">DELETE</code><code class="p">/org/pin</code><span>Clear the organization pin</span></li>
+        </ul>
+      </div>
+      <div class="group">
+        <div class="about"><h3>Usage</h3><p>Triggers your devices acknowledged in the current UTC calendar month. Scope <code>usage:read</code>.</p></div>
+        <ul class="calls">
+          <li><code class="m">GET</code><code class="p">/usage</code><span>Get this month’s trigger count</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="pins" id="pins" data-tone="light">
+    <div class="wrap">
+      <div class="pins-head">
+        <h2>The nearest pin wins</h2>
+        <p class="lead">A device with its own pin shows it. A device set to <code>inherit</code> follows its store, and a store set to <code>inherit</code> follows the organization. A level set to <code>none</code> shows no pinned code.</p>
+      </div>
+      <div class="pin-demo" data-step="3">
+        <ol class="pin-steps">
+          <li><button type="button"><code>PUT /org/pin</code><span>All six devices show the organization’s link.</span></button></li>
+          <li><button type="button"><code>PUT /stores/{storeId}/pin</code><span>Store one’s three devices change. Store two stays.</span></button></li>
+          <li aria-current="step"><button type="button"><code>PUT /devices/{deviceId}/pin</code><span>One device shows a link of its own.</span></button></li>
+          <li><button type="button"><code>DELETE /devices/{deviceId}/pin</code><span>It is back on inherit, so it follows its store.</span></button></li>
+          <li><button type="button"><code>DELETE /stores/{storeId}/pin</code><span>The store is back on inherit and follows the organization.</span></button></li>
+          <li><button type="button"><code>DELETE /org/pin</code><span>Nothing is left to inherit. The devices show no pinned code.</span></button></li>
+        </ol>
+        <div class="tree" role="group" aria-label="One organization, two stores, six devices">
+          <div class="node org" data-pin="org"><b>Organization</b><code class="u">/welcome</code></div>
+          <div class="stores">
+            <div class="branch">
+              <div class="node store" data-pin="store"><b>Store one</b><code class="u">/store-menu</code></div>
+              <ul class="devs"><li data-pin="device"><code class="u">/menu</code></li><li data-pin="store"><code class="u">/store-menu</code></li><li data-pin="store"><code class="u">/store-menu</code></li></ul>
+            </div>
+            <div class="branch">
+              <div class="node store" data-pin="org"><b>Store two</b><code class="u">inherit</code></div>
+              <ul class="devs"><li data-pin="org"><code class="u">/welcome</code></li><li data-pin="org"><code class="u">/welcome</code></li><li data-pin="org"><code class="u">/welcome</code></li></ul>
+            </div>
+          </div>
+          <p class="aff" aria-live="polite"><code>"affectedDevices": <b>1</b></code></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="code-sec" id="code" data-tone="light">
+    <div class="wrap">
+      <h2>Copy it, then change two values</h2>
+      <p class="lead">Put in your key and a device ID. Both are in the console at <a href="https://console.maratus.co" target="_blank" rel="noopener">console.maratus.co</a>: keys under API, the device ID on the device’s own page. The full key is shown once, when it is created.</p>
+      <figure class="band"><div class="band-in"><img loading="lazy" src="../assets/dev/desk-1200.webp" srcset="../assets/dev/desk-1200.webp 1200w, ../assets/dev/desk.webp 2000w" sizes="(max-width:860px) 160vw, 100vw" width="2000" height="1116" alt="A developer’s desk at dusk: a laptop with the trigger request on it, and the device beside it showing a QR code."></div><figcaption>Illustration</figcaption></figure>
+      <div class="sheet">
+        <div class="bar">
+          <div class="tabs" role="tablist" aria-label="Language">
+            <button type="button" role="tab" id="t-curl" aria-controls="p-curl" aria-selected="true">curl</button>
+            <button type="button" role="tab" id="t-js" aria-controls="p-js" aria-selected="false" tabindex="-1">JavaScript</button>
+            <button type="button" role="tab" id="t-py" aria-controls="p-py" aria-selected="false" tabindex="-1">Python</button>
+          </div>
+          <button type="button" class="copy">Copy code</button>
+        </div>
+        <div class="panes">
+          <div class="req">
+            <div role="tabpanel" id="p-curl" aria-labelledby="t-curl"><h3 class="nojs">curl</h3><pre tabindex="0"><code>curl -X <i class="k">POST</i> https://api.maratus.co/v1/devices/<i class="v">DEVICE_ID</i>/trigger \
+  -H <i class="s">"Authorization: Bearer <i class="v">YOUR_API_KEY</i>"</i> \
+  -H <i class="s">"Content-Type: application/json"</i> \
+  -H <i class="s">"Idempotency-Key: $(uuidgen)"</i> \
+  -d <i class="s">'{
+    "action": "show_qr",
+    "payload": { "url": "https://example.com/receipt/8812" }
+  }'</i></code></pre></div>
+            <div role="tabpanel" id="p-js" aria-labelledby="t-js"><h3 class="nojs">JavaScript</h3><pre tabindex="0"><code><i class="k">const</i> url = <i class="s">"https://api.maratus.co/v1/devices/<i class="v">DEVICE_ID</i>/trigger"</i>;
+<i class="k">const</i> res = <i class="k">await</i> fetch(url, {
+  method: <i class="s">"POST"</i>,
+  headers: {
+    <i class="s">"Authorization"</i>: <i class="s">"Bearer <i class="v">YOUR_API_KEY</i>"</i>,
+    <i class="s">"Content-Type"</i>: <i class="s">"application/json"</i>,
+    <i class="s">"Idempotency-Key"</i>: crypto.randomUUID(),
+  },
+  body: JSON.stringify({
+    action: <i class="s">"show_qr"</i>,
+    payload: { url: <i class="s">"https://example.com/receipt/8812"</i> },
+  }),
+});
+
+<i class="k">const</i> body = <i class="k">await</i> res.json();
+<i class="k">if</i> (res.status === <i class="k">202</i>) console.log(body.id);
+<i class="k">else</i> console.error(body.error.code);</code></pre></div>
+            <div role="tabpanel" id="p-py" aria-labelledby="t-py"><h3 class="nojs">Python</h3><pre tabindex="0"><code><i class="k">import</i> uuid
+<i class="k">import</i> requests
+
+res = requests.post(
+    <i class="s">"https://api.maratus.co/v1/devices/<i class="v">DEVICE_ID</i>/trigger"</i>,
+    headers={
+        <i class="s">"Authorization"</i>: <i class="s">"Bearer <i class="v">YOUR_API_KEY</i>"</i>,
+        <i class="s">"Idempotency-Key"</i>: str(uuid.uuid4()),
+    },
+    json={
+        <i class="s">"action"</i>: <i class="s">"show_qr"</i>,
+        <i class="s">"payload"</i>: {<i class="s">"url"</i>: <i class="s">"https://example.com/receipt/8812"</i>},
+    },
+)
+
+body = res.json()
+print(body[<i class="s">"id"</i>] <i class="k">if</i> res.status_code == <i class="k">202</i> <i class="k">else</i> body[<i class="s">"error"</i>][<i class="s">"code"</i>])</code></pre></div>
+          </div>
+          <div class="ans">
+            <h3>Accepted</h3>
+            <pre tabindex="0"><code><i class="k">202</i>
+{
+  <i class="d">"id":</i> <i class="s">"cmd_4Qp0dN7hZk2bWm9xYc1aE"</i>,
+  <i class="d">"status":</i> <i class="s">"queued"</i>
+}</code></pre>
+            <h3>Device offline</h3>
+            <pre tabindex="0"><code><i class="k">409</i>
+{
+  <i class="d">"error":</i> {
+    <i class="d">"code":</i> <i class="s">"device_offline"</i>,
+    <i class="d">"message":</i> <i class="s">"Device is offline or paused."</i>
+  }
+}</code></pre>
+          </div>
+        </div>
+      </div>
+      <p class="real">Try every call in the <a href="https://docs.maratus.co" target="_blank" rel="noopener">API reference</a>.</p>
+    </div>
+  </section>
+
+  <section class="auth" id="errors" data-tone="light">
+    <div class="wrap">
+      <h2>Auth and errors</h2>
+      <p class="lead">Every request needs an API key, sent as a bearer token.</p>
+      <p class="line"><code>Authorization: Bearer <i>YOUR_API_KEY</i></code></p>
+      <p class="more">Errors share one JSON shape. Branch on <code>code</code>; <code>message</code> is for people and may change. An unexpected fault can return a <code>500</code> without that shape: treat it like <code>internal_error</code>.</p>
+      <table>
+        <caption>Success is <code>202</code> for a trigger and <code>200</code> for pin and usage calls.</caption>
+        <thead><tr><th scope="col">Status</th><th scope="col">Code</th><th scope="col">Meaning</th><th scope="col">Retry</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">400</th><td><code>missing_idempotency_key</code></td><td>Trigger sent without an <code>Idempotency-Key</code> header.</td><td>No</td></tr>
+          <tr><th scope="row">401</th><td><code>unauthorized</code></td><td>Missing, malformed, unknown or revoked API key.</td><td>No</td></tr>
+          <tr><th scope="row">403</th><td><code>insufficient_scope</code></td><td>The key lacks the scope this endpoint needs.</td><td>No</td></tr>
+          <tr><th scope="row">403</th><td><code>device_not_subscribed</code></td><td>This device has no active subscription.</td><td>No</td></tr>
+          <tr><th scope="row">403</th><td><code>org_archived</code></td><td>Your organization is archived; pin changes that would display a QR are blocked.</td><td>No</td></tr>
+          <tr><th scope="row">404</th><td><code>device_not_found</code></td><td>No device with this ID in your organization.</td><td>No</td></tr>
+          <tr><th scope="row">404</th><td><code>register_not_found</code></td><td>No device in your organization has this register number.</td><td>No</td></tr>
+          <tr><th scope="row">404</th><td><code>store_not_found</code></td><td>No store with this ID in your organization.</td><td>No</td></tr>
+          <tr><th scope="row">409</th><td><code>device_offline</code></td><td>The device is paused, or has not checked in for 15 minutes.</td><td>Once it is back online</td></tr>
+          <tr><th scope="row">409</th><td><code>conflict</code></td><td>Another request with the same <code>Idempotency-Key</code> is still in progress.</td><td>Shortly, with the same key</td></tr>
+          <tr><th scope="row">422</th><td><code>invalid_request</code></td><td>Malformed JSON, a body that fails validation, or an <code>Idempotency-Key</code> reused with a different pin body.</td><td>No</td></tr>
+          <tr><th scope="row">429</th><td><code>rate_limited</code></td><td>Over 120 requests a minute for this key.</td><td>After <code>Retry-After</code> seconds</td></tr>
+          <tr><th scope="row">500</th><td><code>internal_error</code></td><td>The command could not be recorded.</td><td>With the same key</td></tr>
+          <tr><th scope="row">503</th><td><code>transport_unavailable</code></td><td>The device messaging service did not accept the command. Nothing was shown.</td><td>With the same key</td></tr>
+          <tr><th scope="row">503</th><td><code>transport_unconfigured</code></td><td>Device messaging is not configured on this deployment.</td><td>No</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="who" id="who" data-tone="dark">
+    <figure class="night"><img loading="lazy" src="../assets/dev/night-1400.webp" srcset="../assets/dev/night-1400.webp 1400w, ../assets/dev/night.webp 2400w" sizes="(max-width:860px) 190vw, 110vw" width="2400" height="1340" alt="An empty shop at night. The device and an open laptop stand on the counter."><figcaption>Illustration</figcaption></figure>
+    <div class="wrap">
+      <h2>You can do it yourself, or we do it for you</h2>
+      <p>Your developers add the request to your POS, CRM, loyalty or booking system. If you would rather not, ask us and we do the integration. Bring the people who run your till software to the first conversation.</p>
+      <p class="act"><a class="btn" href="https://docs.maratus.co" target="_blank" rel="noopener">Read the API reference</a><a class="text" href="mailto:hi@maratus.co?subject=Maratus%20integration">hi@maratus.co</a></p>
+    </div>
+  </section>
+</main>
+
+<footer data-tone="dark">
+  <a class="brand" href="../" aria-label="maratus, home"><svg width="220" height="40" aria-hidden="true"><use href="#lockup"/></svg></a>
+  <ul>
+    <li><a href="../">Home</a></li>
+    <li><a href="../docks/">Docks</a></li>
+    <li><a href="../technical/">Technical</a></li>
+    <li><a href="../pricing/">Pricing</a></li>
+    <li><a href="https://docs.maratus.co" target="_blank" rel="noopener">API docs</a></li>
+    <li><a href="mailto:hi@maratus.co?subject=Maratus">hi@maratus.co</a></li>
+    <li><a href="https://github.com/erenmeren/maratus-site" target="_blank" rel="noopener">This site on GitHub</a></li>
+  </ul>
+  <p>Device images are design renders. The hardware is in development.</p>
+</footer>
+</body>
+</html>
