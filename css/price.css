@@ -1,0 +1,43 @@
+/* Pricing page: short, no amounts. The Core lifts off its Dock because both are lent. */
+body{background:var(--pink)}
+.wrap{max-width:1720px}
+.top{position:absolute}
+h2{font-size:clamp(44px,5.7vw,92px)}
+.lead{font-size:clamp(21px,1.8vw,28px);line-height:1.3;margin:28px 0 26px;max-width:22em}
+.hero{padding:120px 0 0;overflow:clip}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,53fr) minmax(0,47fr);align-items:center}
+.lede{padding-bottom:64px}
+h1{font-size:clamp(50px,7.1vw,120px);letter-spacing:-.045em;line-height:.88}
+.hero figure{width:118%;margin:-7% -12% 0 -6%;-webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 80%,transparent);mask:linear-gradient(90deg,transparent,#000 12%,#000 80%,transparent)}
+.hero img{width:100%}
+.covers{background:var(--blush);padding:var(--gap) 0}
+dl{margin-top:clamp(36px,4.4vw,64px)}
+dl div{display:grid;grid-template-columns:minmax(0,38fr) minmax(0,62fr);gap:6px 30px;align-items:baseline;padding:24px 0;border-top:2px solid var(--line)}
+dl div:last-child{border-bottom:2px solid var(--line)}
+dt{font-weight:800;letter-spacing:-.028em;line-height:1;font-size:clamp(30px,3.1vw,50px)}
+dd{margin:0;max-width:29em;font-size:clamp(19px,1.5vw,23px);line-height:1.38}
+dd a{text-underline-offset:4px;text-decoration-thickness:2px}
+.integ{background:var(--tangerine);padding:var(--gap) 0}
+.integ p{margin-top:24px;max-width:27em;font-size:clamp(21px,1.8vw,28px);line-height:1.34}
+.faq{background:var(--oxblood);color:var(--on-ox);padding:var(--gap) 0}
+.faq .wrap{display:grid;grid-template-columns:minmax(0,38fr) minmax(0,62fr);gap:40px 30px}
+.qa{display:grid;gap:42px;margin-top:14px}
+.qa h3{font-size:clamp(25px,2.1vw,34px)}
+.qa p{margin-top:10px;max-width:27em;color:var(--on-ox)}
+.end{background:var(--pink);padding:var(--gap) 0}
+.end p:not(.act){margin-top:22px;font-size:clamp(20px,1.6vw,25px)}
+.end .act{margin-top:26px}
+@media (max-width:860px){
+  .hero{padding-top:104px}
+  .hero .wrap{grid-template-columns:minmax(0,1fr)}
+  .lede{padding-bottom:0}
+  .hero figure{width:112%;margin:-3% -6% -2%}
+  dl div{grid-template-columns:minmax(0,1fr)}
+  .faq .wrap{grid-template-columns:minmax(0,1fr)}
+  .qa{gap:34px}
+}
+/* the one movement: the device comes down a little slower than the page */
+@supports (animation-timeline:scroll()){@media (prefers-reduced-motion:no-preference){
+  .hero img{animation:fall linear both;animation-timeline:scroll();animation-range:0 100vh}
+  @keyframes fall{to{transform:translate3d(0,13%,0)}}
+}}

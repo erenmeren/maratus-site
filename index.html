@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maratus | A better “here you go” at every till</title>
+<meta name="description" content="A small screen for the counter and a bridge to your customer. You decide what it shows, they open it on their own phone.">
+<meta name="theme-color" content="#f6b8c1">
+<link rel="icon" href="assets/logo/favicon-32.svg" type="image/svg+xml">
+<link rel="icon" href="assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="preload" href="assets/img/poster-hero.webp" as="image" type="image/webp" media="(min-width:861px)">
+<link rel="preload" href="assets/img/poster-phone.webp" as="image" type="image/webp" media="(max-width:860px)">
+<link rel="preload" href="assets/fonts/gabarito-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/home.css">
+<script type="importmap">{"imports":{"three":"./vendor/three/three.module.js","three/addons/":"./vendor/three/addons/"}}</script>
+<script>(function(d){try{var c=document.createElement('canvas');if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&localStorage.getItem('motion')!=='off'&&innerHeight>=480&&c.getContext('webgl2'))d.classList.add('live')}catch(e){}})(document.documentElement)</script>
+<script type="module" src="js/home.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg class="defs" width="0" height="0" aria-hidden="true"><symbol id="lockup" viewBox="0 -788 4412.7 800"><g transform="translate(303.86 -291.86) scale(7.15809)"><path fill="var(--disc)" fill-rule="evenodd" d="M-11.34 -46.2A1.3 1.3 0 0 1 -12.7 -48.07A39 39 0 1 1 49.64 -2.78A1.3 1.3 0 0 1 47.44 -3.49L44.16 -24.21A30.4 30.4 0 0 0 9.38 -49.48Z"/><path fill="currentColor" fill-rule="evenodd" d="M6.26 39.51L-10.53 42.17A23 23 0 0 1 -36.85 23.05L-42.17 -10.53A23 23 0 0 1 -23.05 -36.85L10.53 -42.17A23 23 0 0 1 36.85 -23.05L42.17 10.53A23 23 0 0 1 23.05 36.85Z"/></g><path fill="currentColor" transform="translate(930.7 0) scale(1)" d="M14 0L108 0C115.73 0 122 -6.27 122 -14L122 -486C122 -493.73 115.73 -500 108 -500L14 -500C6.27 -500 0 -493.73 0 -486L0 -14C0 -6.27 6.27 0 14 0ZM60.36 -220L108 -220C115.73 -220 122 -226.27 122 -234L122 -300C122 -357.44 160.05 -404 207 -404C253.95 -404 292 -348.49 292 -280L292 -14C292 -6.27 298.27 0 306 0L400 0C407.73 0 414 -6.27 414 -14L414 -280C414 -407.03 336.64 -510 241.21 -510C133.59 -510 46.36 -398.08 46.36 -260L46.36 -234C46.36 -226.27 52.63 -220 60.36 -220ZM352.36 -220L400 -220C407.73 -220 414 -226.27 414 -234L414 -300C414 -357.44 452.05 -404 499 -404C545.95 -404 584 -348.49 584 -280L584 -14C584 -6.27 590.27 0 598 0L692 0C699.73 0 706 -6.27 706 -14L706 -280C706 -407.03 628.64 -510 533.21 -510C425.59 -510 338.36 -398.08 338.36 -260L338.36 -234C338.36 -226.27 344.63 -220 352.36 -220ZM1286.52 -250C1286.52 -393.6 1170 -510 1026.26 -510C882.52 -510 766 -393.6 766 -250C766 -106.4 882.52 10 1026.26 10C1170 10 1286.52 -106.4 1286.52 -250ZM1206 -250C1206 -164.95 1133.72 -96 1044.56 -96C955.4 -96 883.12 -164.95 883.12 -250C883.12 -335.05 955.4 -404 1044.56 -404C1133.72 -404 1206 -335.05 1206 -250ZM1220 0L1314 0C1321.73 0 1328 -6.27 1328 -14L1328 -486C1328 -493.73 1321.73 -500 1314 -500L1220 -500C1212.27 -500 1206 -493.73 1206 -486L1206 -14C1206 -6.27 1212.27 0 1220 0ZM1414 0L1508 0C1515.73 0 1522 -6.27 1522 -14L1522 -486C1522 -493.73 1515.73 -500 1508 -500L1414 -500C1406.27 -500 1400 -493.73 1400 -486L1400 -14C1400 -6.27 1406.27 0 1414 0ZM1456.16 -240L1508 -240C1515.73 -240 1522.33 -247.81 1522.75 -257.43C1529.22 -332.78 1577.21 -392.66 1637.67 -400.91C1645.59 -401.45 1652 -408.15 1652 -415.88L1652 -496C1652 -503.73 1645.46 -509.72 1637.39 -509.38C1530.63 -500.27 1446.36 -392.1 1446.36 -260L1446.36 -249.8C1446.36 -244.39 1450.75 -240 1456.16 -240ZM2194.52 -250C2194.52 -393.6 2078 -510 1934.26 -510C1790.52 -510 1674 -393.6 1674 -250C1674 -106.4 1790.52 10 1934.26 10C2078 10 2194.52 -106.4 2194.52 -250ZM2114 -250C2114 -164.95 2041.72 -96 1952.56 -96C1863.4 -96 1791.12 -164.95 1791.12 -250C1791.12 -335.05 1863.4 -404 1952.56 -404C2041.72 -404 2114 -335.05 2114 -250ZM2128 0L2222 0C2229.73 0 2236 -6.27 2236 -14L2236 -486C2236 -493.73 2229.73 -500 2222 -500L2128 -500C2120.27 -500 2114 -493.73 2114 -486L2114 -14C2114 -6.27 2120.27 0 2128 0ZM2350 -166.92C2350 -74.73 2424.73 0 2516.92 0L2540 0C2547.73 0 2554 -6.27 2554 -14L2554 -96.2C2554 -101.61 2549.61 -106 2544.2 -106L2534 -106C2499.76 -106 2472 -133.76 2472 -168L2472 -624C2472 -631.73 2465.73 -638 2458 -638L2364 -638C2356.27 -638 2350 -631.73 2350 -624L2350 -166.92ZM2288 -396.12L2540 -396.12C2547.73 -396.12 2554 -402.39 2554 -410.12L2554 -486C2554 -493.73 2547.73 -500 2540 -500L2288 -500C2280.27 -500 2274 -493.73 2274 -486L2274 -410.12C2274 -402.39 2280.27 -396.12 2288 -396.12ZM3032 -500L2938 -500C2930.27 -500 2924 -493.73 2924 -486L2924 -14C2924 -6.27 2930.27 0 2938 0L3032 0C3039.73 0 3046 -6.27 3046 -14L3046 -486C3046 -493.73 3039.73 -500 3032 -500ZM2985.64 -280L2938 -280C2930.27 -280 2924 -273.73 2924 -266L2924 -200C2924 -142.56 2881.02 -96 2828 -96C2774.98 -96 2732 -151.51 2732 -220L2732 -486C2732 -493.73 2725.73 -500 2718 -500L2624 -500C2616.27 -500 2610 -493.73 2610 -486L2610 -220C2610 -92.97 2691.99 10 2793.13 10C2907.19 10 2999.64 -101.92 2999.64 -240L2999.64 -266C2999.64 -273.73 2993.37 -280 2985.64 -280ZM3452.99 -380.82C3430.91 -459.72 3371.87 -510 3290 -510C3188.24 -510 3111.44 -445 3111.44 -352.5C3111.44 -265 3170.96 -219.68 3290 -195.88C3328.4 -185.38 3358.94 -175 3358.94 -149C3358.94 -128 3323.79 -90.7 3286.16 -90.7C3252.99 -90.7 3219.1 -117.66 3204.01 -148.02C3201.24 -154.86 3193.24 -158.95 3186.16 -157.15L3115.89 -139.36C3108.55 -137.51 3104.43 -129.18 3106.67 -120.77C3131.37 -39.73 3197.73 10 3290 10C3399.44 10 3472.4 -54 3472.4 -149C3472.4 -237.5 3409.04 -282.32 3290 -306.12C3251.6 -316.62 3224.9 -326.5 3224.9 -352.5C3224.9 -373.5 3256.21 -409.3 3293.84 -409.3C3319.82 -409.3 3349.17 -385.86 3362.07 -360.06C3364.66 -353.48 3372.33 -349.12 3379.19 -350.32L3442.87 -361.51C3450.7 -362.89 3455.23 -371.53 3452.99 -380.82Z"/></symbol></svg>
+<header class="top">
+  <a class="brand" href="./" aria-label="maratus, home"><svg width="176" height="32" aria-hidden="true"><use href="#lockup"/></svg></a>
+  <nav aria-label="Main">
+    <a href="#hands">What it hands over</a>
+    <a href="#how">How it works</a>
+    <a href="#places">Places</a>
+    <a href="#device">The device</a>
+    <a href="docks/">Docks</a>
+    <a href="technical/">Technical</a>
+    <a href="developers/">Developers</a>
+    <a href="pricing/">Pricing</a>
+  </nav>
+  <a class="btn top-btn" href="mailto:hi@maratus.co?subject=Maratus">Talk to us</a>
+  <details class="menu">
+    <summary>Menu</summary>
+    <nav aria-label="Main, small screens">
+      <a href="#hands">What it hands over</a>
+      <a href="#how">How it works</a>
+      <a href="#places">Places</a>
+      <a href="#device">The device</a>
+      <a href="docks/">Docks</a>
+      <a href="technical/">Technical</a>
+      <a href="developers/">Developers</a>
+      <a href="pricing/">Pricing</a>
+      <a href="mailto:hi@maratus.co?subject=Maratus">Talk to us</a>
+    </nav>
+  </details>
+</header>
+
+<div class="stage" aria-hidden="true"><canvas></canvas><picture><source media="(max-width:860px)" srcset="assets/img/poster-phone.webp"><img class="poster" src="assets/img/poster-hero.webp" width="1000" height="1000" alt="" fetchpriority="high"></picture></div>
+<div class="ctl"><button type="button" id="motion" aria-pressed="false" aria-label="Pause motion" title="Pause motion"><svg class="i-pause" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 1h4v16H3zM11 1h4v16h-4z"/></svg><svg class="i-play" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 1l12 8-12 8z"/></svg></button></div>
+
+<main id="main">
+  <section class="pin hero" id="hero" data-tone="light" style="--len:2.5">
+    <div class="bk"><div class="bk-in">
+      <h1><span class="l1">A better <span class="nb">“here you go”</span></span> <span class="l2">at every till</span></h1>
+    </div></div>
+    <div class="ft"><div class="ft-in">
+      <div class="hero-foot">
+        <p>A small screen for the counter, and a bridge to your customer. You decide what it shows. They open it on their own phone.</p>
+        <p class="act"><a class="btn" href="mailto:hi@maratus.co?subject=Maratus">Talk to us</a><a class="text" href="mailto:hi@maratus.co?subject=Maratus">hi@maratus.co</a></p>
+        <p class="caption">Design render. The device is in development. Screens are illustrative and their codes open maratus.co.</p>
+      </div>
+    </div></div>
+    <figure class="still"><img loading="lazy" src="assets/img/still-hero-900.webp" srcset="assets/img/still-hero-900.webp 900w, assets/img/still-hero.webp 1600w" sizes="(max-width:860px) 100vw, 60vw" width="1600" height="1300" alt="Design render of the device on its Dock: a light grey rounded block, a black glass front with the maratus logo on the screen and the name maratus under it, and orange ends on the Dock."></figure>
+  </section>
+
+  <section class="pin bridge" id="bridge" data-tone="dark" style="--len:3.1">
+    <div class="bk"><div class="bk-in">
+      <h2>Your screen, your idea</h2>
+      <div class="bank yours"><h3>Your business</h3><p>Show whatever you want to hand across: a setlist, a class timetable, “your table is ready”. Maratus is the bridge. The idea is yours.</p></div>
+      <div class="bank theirs"><h3>Your customer</h3><p>They point a phone at the code, and what you made opens in their hand.</p></div>
+    </div></div>
+    <figure class="still trio"><img loading="lazy" src="assets/img/screen-song.webp" width="900" height="900" alt="The device asking customers to pick the next song, with a code to vote."><img loading="lazy" src="assets/img/screen-table.webp" width="900" height="900" alt="The device showing: Your table is ready."><img loading="lazy" src="assets/img/screen-timetable.webp" width="900" height="900" alt="The device showing today’s classes, with a code to book a place."></figure>
+  </section>
+
+  <section class="pin hands" id="hands" style="--len:7.5">
+    <div class="bk"><div class="bk-in">
+      <h2>What it hands over, to start with</h2>
+      <article class="panel p-receipts" id="hands-receipts" data-tone="light" style="--n:8.1">
+        <h3>Receipts</h3>
+        <p>Receipts, warranties and returns papers become a page the customer keeps on their phone.</p>
+        <img class="still" loading="lazy" src="assets/img/screen-receipt.webp" width="900" height="900" alt="The device showing a receipt code with the line: Scan to keep it.">
+      </article>
+      <article class="panel p-offers" id="hands-offers" data-tone="light" style="--n:6.1">
+        <h3>Offers</h3>
+        <p>An offer, or a product on the house, for whoever is standing there. They don’t have to be a member.</p>
+        <img class="still" loading="lazy" src="assets/img/screen-offer.webp" width="900" height="900" alt="The device showing an offer: This one’s on us.">
+      </article>
+      <article class="panel p-loyalty" id="hands-loyalty" data-tone="light" style="--n:6.9">
+        <h3>Loyalty</h3>
+        <p>Members see their card and open it on their own phone. Everyone else can see what joining gets them.</p>
+        <img class="still" loading="lazy" src="assets/img/screen-loyalty.webp" width="900" height="900" alt="The device showing a loyalty card with five of eight stamps.">
+      </article>
+      <article class="panel p-tickets" id="hands-tickets" data-tone="dark" style="--n:6.9">
+        <h3>Tickets</h3>
+        <p>Tonight’s ticket, a class pass, a gym membership. One scan and it’s in their pocket.</p>
+        <img class="still" loading="lazy" src="assets/img/screen-ticket.webp" width="900" height="900" alt="The device showing tonight’s ticket on a dark red screen.">
+      </article>
+      <article class="panel p-menus" id="hands-menus" data-tone="light" style="--n:5.6">
+        <h3>Menus</h3>
+        <p>Pin today’s menu and it stays up until you change it. Your software keeps the rules, the rewards and the content.</p>
+        <img class="still" loading="lazy" src="assets/img/screen-menu.webp" width="900" height="900" alt="The device showing today’s menu.">
+      </article>
+      <article class="panel p-idea" id="hands-idea" data-tone="dark" style="--n:8.4">
+        <h3>Your idea</h3>
+        <p>The other five are examples. A question, a vote, a waiting list: if it opens from a link, it can go on your counter.</p>
+        <img class="still" loading="lazy" src="assets/img/screen-question.webp" width="900" height="900" alt="The device asking: How was it today?">
+      </article>
+    </div></div>
+  </section>
+
+  <section class="pin how" id="how" data-tone="light" style="--len:4.7">
+    <div class="bk"><div class="bk-in">
+      <div class="nums" aria-hidden="true"><span>1</span><span>2</span><span>3</span></div>
+    </div></div>
+    <div class="ft"><div class="ft-in">
+      <h2>How it works for your customer</h2>
+      <ol class="swap">
+        <li><h3>The screen lights up</h3><p>Your till sends a link, and the code for it appears in front of the customer.</p></li>
+        <li><h3>They point a phone at it</h3><p>The phone’s own camera reads the code. Nothing to install, nothing to type.</p></li>
+        <li><h3>Your page opens</h3><p>It’s your own link, on your own site. Maratus doesn’t host the page and doesn’t see what they open.</p></li>
+      </ol>
+    </div></div>
+    <figure class="still"><img loading="lazy" src="assets/img/still-phone.webp" width="1200" height="1000" alt="The device showing a receipt code, with a phone in front of it that has opened the shop’s own receipt page."></figure>
+  </section>
+
+  <section class="pin places" id="places" data-tone="light" style="--len:7.6">
+    <div class="bk"><div class="bk-in">
+      <h2>One device, any counter</h2>
+      <ul class="strip" id="strip">
+        <li><h3>Coffee shop</h3><p>The loyalty card, while the milk is steaming.</p></li>
+        <li><h3>Restaurant</h3><p>Their table is ready, and the code knows the way.</p></li>
+        <li><h3>Concert</h3><p>Tonight’s setlist at the bar, to take home.</p></li>
+        <li><h3>Gym</h3><p>Today’s classes, and a place in one of them.</p></li>
+        <li><h3>Fashion</h3><p>Proof of purchase that can’t fall out of the bag.</p></li>
+      </ul>
+      <p class="caption" id="places-caption">Places are AI-generated illustrations. The device is our live 3D model.</p>
+    </div></div>
+  </section>
+
+  <section class="pin device" id="device" data-tone="dark" style="--len:11.4">
+    <div class="bk"><div class="bk-in"><div class="ghost" aria-hidden="true">Your side</div></div></div>
+    <div class="ft"><div class="ft-in swap">
+      <div class="say right tall"><h2>Now walk round to your side</h2><p>It’s about the size of a mug: one small case, black glass with the name under the screen, a Dock in a second colour.</p>
+        <fieldset class="picker"><legend>Case colour<span class="nm-now" id="case-name" aria-hidden="true">Retro</span></legend>
+          <div class="dots">
+            <label><input type="radio" name="case" value="retro" checked><span class="sw retro"></span><span class="nm">Retro</span></label>
+            <label><input type="radio" name="case" value="black"><span class="sw black"></span><span class="nm">Black and red</span></label>
+            <label><input type="radio" name="case" value="orange"><span class="sw orange"></span><span class="nm">Orange and black</span></label>
+            <label><input type="radio" name="case" value="yellow"><span class="sw yellow"></span><span class="nm">Yellow and grey</span></label>
+            <label><input type="radio" name="case" value="blue"><span class="sw blue"></span><span class="nm">Blue and grey</span></label>
+            <label><input type="radio" name="case" value="green"><span class="sw green"></span><span class="nm">Sea green and peach red</span></label>
+            <label><input type="radio" name="case" value="slate"><span class="sw slate"></span><span class="nm">Slate and gold</span></label>
+            <label><input type="radio" name="case" value="pink"><span class="sw pink"></span><span class="nm">Pink and red</span></label>
+          </div>
+        </fieldset>
+        <p class="caption">Colours shown are proposals.<span class="still"> The pictures on this page show the first one, Retro.</span></p>
+        <div class="still colours"><img loading="lazy" src="assets/img/colour-retro.webp" width="900" height="900" alt="The device in Retro: a light grey case, orange ends on the Dock, and the name maratus in grey on the black glass under the screen."></div>
+      </div>
+      <div class="say left"><h3>The cables stay with you</h3><p>Power comes in over USB-C at the back of the Dock. The customer’s side stays clear.</p></div>
+      <div class="say left"><h3>The screen lifts off its Dock</h3><p>Off the pins, then straight up. The Dock stays where it is.</p></div>
+      <div class="say left"><h3>USB-C is underneath</h3><p>On the Dock it isn’t needed. Off the Dock, this is where the power goes in.</p></div>
+      <div class="say high"><h3>Twenty gold contacts, flush with the case</h3><p>The back of the screen is one flat plane.</p></div>
+      <div class="say high"><h3>Twenty spring pins on the Dock</h3><p>The Dock’s USB-C power goes up through them when the screen sits down again.</p></div>
+    </div></div>
+    <figure class="still trio"><img loading="lazy" src="assets/img/still-rear-900.webp" width="1600" height="1300" alt="Design render of the back: a round, light grey Dock with orange ends. Its USB-C and Ethernet sockets face the staff side."><img loading="lazy" src="assets/img/still-under.webp" width="900" height="900" alt="The underside of the screen, with its USB-C port and four slots."><img class="tile" loading="lazy" src="assets/img/still-pads-900.webp" width="1600" height="1300" alt="Close-up of the twenty round gold contacts, level with the light grey case."></figure>
+  </section>
+
+  <section class="pin off" id="off" data-tone="light" style="--len:10.6">
+    <div class="bk"><div class="bk-in"></div></div>
+    <div class="ft"><div class="ft-in">
+      <h2>It works off the Dock too</h2>
+      <ol class="swap">
+        <li><h3>The magnets are in its back</h3><p>Two discs, hidden just under the case, one each side.</p></li>
+        <li><h3>It snaps onto steel</h3><p>Bring its back close and it holds. Power goes in underneath, over USB-C.</p></li>
+        <li><h3>It sits in a holder</h3><p>The kind of security holder shops already use.</p></li>
+        <li><h3>And back on its Dock</h3><p>By the till, powered again through the pins.</p></li>
+      </ol>
+      <p class="caption">Steel post, holder and cable are examples.</p>
+    </div></div>
+    <figure class="still trio"><img loading="lazy" src="assets/img/still-back.webp" width="900" height="900" alt="The back of the screen. Two round magnets are shown through the case, one each side of the gold contacts."><img class="tile" loading="lazy" src="assets/img/still-magnet.webp" width="900" height="900" alt="The screen without its Dock, held to a brushed steel post by its magnets, with a USB-C cable plugged in underneath."><img loading="lazy" src="assets/img/still-hold.webp" width="900" height="900" alt="The screen in a security holder: four metal arms around the case, on a pole with a round base."></figure>
+  </section>
+
+  <section class="connect" id="connect" data-tone="light">
+    <div class="wrap">
+      <h2><span class="nb">You connect it,</span> <span class="nb">or we do</span></h2>
+      <div class="two">
+        <div><h3>Your team</h3><p>One request from your till or your software puts a code on the screen. Your developers can do it from the docs.</p></div>
+        <div><h3>Our team</h3><p>If you’d rather hand it over, we do the integration for you, with your till people in the room.</p></div>
+      </div>
+    </div>
+    <div class="row" aria-hidden="true"><img loading="lazy" src="assets/img/row-receipt.webp" width="900" height="900" alt=""><img loading="lazy" src="assets/img/row-offer.webp" width="900" height="900" alt=""><img loading="lazy" src="assets/img/row-loyalty.webp" width="900" height="900" alt=""><img loading="lazy" src="assets/img/row-ticket.webp" width="900" height="900" alt=""><img loading="lazy" src="assets/img/row-menu.webp" width="900" height="900" alt=""><img loading="lazy" src="assets/img/row-pass.webp" width="900" height="900" alt=""></div>
+    <div class="wrap">
+      <p class="incl">The device is included in the subscription. You don’t buy hardware.</p>
+      <p class="pilot">Start with a pilot in your own stores. We deliver the devices, and the integration gets done.</p>
+    </div>
+  </section>
+
+  <section class="pin close" id="talk" data-tone="light" style="--len:1.9">
+    <div class="bk"><div class="bk-in"><h2>Talk to us</h2></div></div>
+    <div class="ft"><div class="ft-in">
+      <div class="close-foot">
+        <p>Tell us which counter, and what your customer should leave with.</p>
+        <p class="act"><a class="big" href="mailto:hi@maratus.co?subject=Maratus">hi@maratus.co</a></p>
+        <p><a class="text" href="technical/">Read the technical page</a></p>
+      </div>
+    </div></div>
+    <figure class="still"><img loading="lazy" src="assets/img/screen-mail.webp" width="900" height="900" alt="The device showing a code that starts an email to hi@maratus.co."></figure>
+  </section>
+</main>
+
+<footer data-tone="dark">
+  <a class="brand" href="./" aria-label="maratus, home"><svg width="220" height="40" aria-hidden="true"><use href="#lockup"/></svg></a>
+  <ul>
+    <li><a href="docks/">Docks</a></li>
+    <li><a href="technical/">Technical</a></li>
+    <li><a href="developers/">Developers</a></li>
+    <li><a href="pricing/">Pricing</a></li>
+    <li><a href="https://docs.maratus.co" target="_blank" rel="noopener">API docs</a></li>
+    <li><a href="mailto:hi@maratus.co?subject=Maratus">hi@maratus.co</a></li>
+    <li><a href="https://github.com/erenmeren/maratus-site" target="_blank" rel="noopener">This site on GitHub</a></li>
+  </ul>
+  <p>Device images are design renders. The hardware is in development.</p>
+</footer>
+</body>
+</html>
